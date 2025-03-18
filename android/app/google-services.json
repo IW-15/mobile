@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "964247675738",
+    "project_id": "mda-23",
+    "storage_bucket": "mda-23.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964247675738:android:753ca4a0efa69411140963",
+        "android_client_info": {
+          "package_name": "com.example.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkkWPNOiG_BkyvkC5xeetl_9YXH4dUL9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

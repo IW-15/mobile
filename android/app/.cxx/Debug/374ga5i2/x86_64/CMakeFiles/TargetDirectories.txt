@@ -1,0 +1,2 @@
+C:/Users/Lenovo/Code/MDA/mobile-app/mobile/android/app/.cxx/Debug/374ga5i2/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/Lenovo/Code/MDA/mobile-app/mobile/android/app/.cxx/Debug/374ga5i2/x86_64/CMakeFiles/rebuild_cache.dir
