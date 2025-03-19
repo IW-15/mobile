@@ -13,11 +13,11 @@ class AppRoute {
   static String registerPhonePin = "/register/phone/pin"; // 2
   static String registerEmail = "/register/email"; // 2
   static String registerPassword = "/register/password"; // 3
-  static String registerProfile = "/register/profile"; // 3
-  static String registerFace = "/register/face"; // 4
+  static String registerPasswordConfirm = "/register/password-confirm"; // 3
+
   static String registerUsaha = "/register/usaha"; // 4
-  static String registerUsahaTerkini = "/register/usaha/terkini"; // 4
-  static String registerUsahaKonfirmasi = "/register/usaha/konfirmasi"; // 4
+  static String registerEo = "/register/eo"; // 4
+  static String registerEoConfirm = "/register/eo/confirm"; // 4
 
   static String registerSuccess = "/register/success";
 

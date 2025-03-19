@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/presentation/widgets/app_loading.dart';
@@ -9,6 +11,22 @@ class RegisterController extends GetxController {
   final GlobalKey<FormState> formEmailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formPasswordKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formProfileKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formEoKey = GlobalKey<FormState>();
+
+  RxBool isUMKM = true.obs;
+  RxList<String> pinArray = <String>["", "", "", "", "", ""].obs;
+  RxBool validPin = false.obs;
+
+  void isPinComplete() {
+    validPin.value = pinArray.every((element) => element != "");
+  }
+
+  void onCharacterEntered(String value, int index) {
+    if (index >= 0 && index < pinArray.length) {
+      pinArray[index] = value;
+    }
+    isPinComplete();
+  }
 
   RxString tipeUsaha = "".obs;
   RxMap<String, TextEditingController> form = {
@@ -77,9 +95,20 @@ class RegisterController extends GetxController {
       await closeLoading(isLoading);
 
       if (isValidPhone) {
-        Get.toNamed(AppRoute.registerEmail);
+        Get.toNamed(AppRoute.registerPhonePin);
       }
     } catch (err) {
+      await closeLoading(isLoading);
+    }
+  }
+
+  void registerPhonePin() async {
+    try {
+      showLoadingDialog(Get.context!, isLoading);
+      await Future.delayed(Duration(milliseconds: 400));
+      await closeLoading(isLoading);
+      Get.toNamed(AppRoute.registerEmail);
+    } catch (_) {
       await closeLoading(isLoading);
     }
   }
@@ -101,8 +130,12 @@ class RegisterController extends GetxController {
 
   void registerPassword() async {
     if (formPasswordKey.currentState!.validate()) {
-      Get.toNamed(AppRoute.registerProfile);
+      Get.toNamed(AppRoute.registerPasswordConfirm);
     }
+  }
+
+  void registerPasswordConfirm() async {
+    Get.toNamed(AppRoute.registerUsaha);
   }
 
   void register() async {
@@ -133,4 +166,24 @@ class RegisterController extends GetxController {
       }
     }
   }
+
+  // EO SIDE
+  Rxn<File> eoDocument = Rxn<File>();
+
+  RxMap<String, TextEditingController> formEo = {
+    "name": TextEditingController(),
+    "nib": TextEditingController(),
+    "pic": TextEditingController(),
+    "picPhone": TextEditingController(),
+    "email": TextEditingController(),
+    "address": TextEditingController(),
+  }.obs;
+
+  void eoFillForm() {
+    if (formEoKey.currentState!.validate()) {
+      Get.toNamed(AppRoute.registerEoConfirm);
+    }
+  }
+
+  void registerEo() {}
 }

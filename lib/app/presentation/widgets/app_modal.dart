@@ -67,7 +67,7 @@ class AppModal extends StatelessWidget {
                       child: AppButton(
                         onPressed: onPrimary,
                         text: primaryText,
-                        textStyle: body3BTextStyle(color: Colors.white),
+                        textStyle: body4BTextStyle(color: Colors.white),
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -77,7 +77,7 @@ class AppModal extends StatelessWidget {
                         onPressed: onSecondary,
                         text: secondaryText,
                         type: AppButtonType.outlined,
-                        textStyle: body3BTextStyle(
+                        textStyle: body4BTextStyle(
                           color: ColorConstants.primary[500],
                         ),
                       ),

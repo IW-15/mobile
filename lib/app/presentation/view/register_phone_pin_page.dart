@@ -7,7 +7,6 @@ import 'package:mobile/app/presentation/widgets/register_progress.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile/extensions/map_indexed.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -59,19 +58,21 @@ class RegisterPhonePinPage extends GetView<RegisterController> {
                   children: [0, 1, 2, 3, 4, 5]
                       .mapIndexed((e, i) => OtpInput(
                             index: e,
-                            onChange: (e, i) {},
+                            onChange: controller.onCharacterEntered,
                             isLast: i == 5,
                           ))
                       .toList(),
                 ),
                 Expanded(child: Container()),
                 SizedBox(height: 80.h),
-                AppButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoute.registerEmail);
-                  },
-                  text: "Selanjutnya",
-                  width: 1.sw,
+                Obx(
+                  () => AppButton(
+                    onPressed: controller.validPin.value
+                        ? controller.registerPhonePin
+                        : null,
+                    text: "Selanjutnya",
+                    width: 1.sw,
+                  ),
                 ),
                 SizedBox(height: 20.h),
               ],

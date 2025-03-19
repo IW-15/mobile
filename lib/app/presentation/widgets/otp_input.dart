@@ -6,7 +6,7 @@ import 'package:mobile/styles/text_styles.dart';
 typedef OnChange = void Function(String val, int index);
 
 class OtpInput extends StatelessWidget {
-  TextEditingController? controller = TextEditingController();
+  TextEditingController controller = TextEditingController();
   final int index;
   final OnChange onChange;
   final bool isLast;
@@ -17,7 +17,6 @@ class OtpInput extends StatelessWidget {
     super.key,
     required this.index,
     required this.onChange,
-    this.controller,
     this.isLast = false,
     this.size = 0,
     this.margin = 0,
@@ -48,7 +47,7 @@ class OtpInput extends StatelessWidget {
                 isLast ? TextInputAction.done : TextInputAction.next,
             controller: controller,
             onChanged: (e) {
-              // onChange(controller!.text, index);
+              onChange(controller.text, index);
 
               if (e.length == 1) {
                 if (isLast) {

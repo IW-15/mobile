@@ -49,7 +49,7 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                 ),
                 SizedBox(height: 16.h),
                 Text(
-                  "Kelola Usaha Jadi Makin Gampang",
+                  "Kelola ${controller.isUMKM.value ? "Usaha" : "Events"} Jadi Makin Gampang",
                   style: h4BTextStyle(),
                   textAlign: TextAlign.center,
                 ),

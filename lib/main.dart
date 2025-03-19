@@ -42,7 +42,7 @@ class MainApp extends StatelessWidget {
                   title: dotenv.env['PROJECT_TITLE']!,
                   theme: globalTheme(),
                   getPages: appPage(),
-                  initialRoute: AppRoute.landing,
+                  initialRoute: AppRoute.registerEo,
                   builder: (context, child) {
                     return MediaQuery(
                       data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

@@ -80,7 +80,7 @@ class RegisterPasswordPage extends GetView<RegisterController> {
                   Expanded(child: Container()),
                   AppButton(
                     onPressed: controller.registerPassword,
-                    text: "Lengkapi Akun",
+                    text: "Selanjutnya",
                   ),
                   SizedBox(height: 20.h),
                 ],

@@ -29,13 +29,16 @@ import 'package:mobile/app/presentation/view/loan_summary_page.dart';
 import 'package:mobile/app/presentation/view/login_page.dart';
 import 'package:mobile/app/presentation/view/outlet_page.dart';
 import 'package:mobile/app/presentation/view/register_email_page.dart';
+import 'package:mobile/app/presentation/view/register_eo_confirm_page.dart';
+import 'package:mobile/app/presentation/view/register_eo_page.dart';
+import 'package:mobile/app/presentation/view/register_password_confirm_page.dart';
 import 'package:mobile/app/presentation/view/register_password_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_pin_page.dart';
-import 'package:mobile/app/presentation/view/register_profile_page.dart';
 import 'package:mobile/app/presentation/view/register_rekening_page.dart';
 import 'package:mobile/app/presentation/view/register_success_page.dart';
 import 'package:mobile/app/presentation/view/register_tipe_page.dart';
+import 'package:mobile/app/presentation/view/register_usaha_page.dart';
 import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/splash_page.dart';
@@ -87,8 +90,26 @@ List<GetPage<dynamic>> appPage() {
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(
-      name: AppRoute.registerProfile,
-      page: () => RegisterProfilePage(),
+      name: AppRoute.registerPasswordConfirm,
+      page: () => RegisterPasswordConfirmPage(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.registerUsaha,
+      page: () => RegisterUsahaPage(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.registerEo,
+      page: () => RegisterEoPage(),
+      binding: AuthBinding(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.registerEoConfirm,
+      page: () => RegisterEoConfirmPage(),
       binding: AuthBinding(),
       transition: Transition.rightToLeftWithFade,
     ),
