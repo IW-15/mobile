@@ -7,6 +7,7 @@ import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
 import 'package:mobile/app/bindings/outlet_bindings.dart';
+import 'package:mobile/app/bindings/sme_event_bindings.dart';
 import 'package:mobile/app/bindings/talangan_bindings.dart';
 import 'package:mobile/app/presentation/view/cashflow_page.dart';
 import 'package:mobile/app/presentation/view/create_outlet_page.dart';
@@ -41,6 +42,12 @@ import 'package:mobile/app/presentation/view/register_tipe_page.dart';
 import 'package:mobile/app/presentation/view/register_usaha_page.dart';
 import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_detail_event_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_invoice_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_payment_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_registered_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_search_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_success_page.dart';
 import 'package:mobile/app/presentation/view/splash_page.dart';
 import 'package:mobile/app/presentation/view/talangan_page.dart';
 import 'package:mobile/routes/app_route.dart';
@@ -234,6 +241,36 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.repaymentSuccess(":id"),
       page: () => RepaymentSuccessPage(),
       binding: CreditScoreBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventSearch,
+      page: () => SmeEventSearchPage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventDetail(":id"),
+      page: () => SmeDetailEventPage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventRegistered,
+      page: () => SmeEventRegisteredPage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventInvoice(":id"),
+      page: () => SmeEventInvoicePage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventPayment(":id"),
+      page: () => SmeEventPaymentPage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eventSuccess,
+      page: () => SmeEventSuccessPage(),
+      binding: SmeEventBindings(),
     ),
   ];
 }
