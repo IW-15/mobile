@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/sme_detail_event_controller.dart';
-import 'package:mobile/app/presentation/partials/event/card_survey_sme.dart';
+import 'package:mobile/app/controller/eo/eo_detail_event_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
-import 'package:mobile/app/presentation/widgets/app_modal.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/format_currency.dart';
 
-class SmeDetailEventPage extends GetView<SmeDetailEventController> {
-  const SmeDetailEventPage({super.key});
+class EoDetailEventPage extends GetView<EoDetailEventController> {
+  const EoDetailEventPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +57,28 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
                                         "Deskripsi Event",
                                         style: body4BTextStyle(),
                                       ),
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: controller.handleEdit,
+                                            child: Icon(
+                                              Icons.edit,
+                                              size: 20.w,
+                                              color:
+                                                  ColorConstants.primary[500],
+                                            ),
+                                          ),
+                                          SizedBox(width: 4.w),
+                                          GestureDetector(
+                                            onTap: controller.handleDelete,
+                                            child: Icon(
+                                              Icons.delete,
+                                              size: 20.w,
+                                              color: ColorConstants.error,
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ),
                                 ),
@@ -131,78 +152,10 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
                                         ],
                                       ),
                                       SizedBox(height: 8.h),
-                                      Text(
-                                        "Partisipan",
-                                        style: body5BTextStyle(),
-                                      ),
-                                      SizedBox(height: 8.h),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 2.w),
-                                            width: 28.w,
-                                            height: 28.w,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xffFFE14B),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "LE",
-                                                style: body6BTextStyle(
-                                                  color: ColorConstants
-                                                      .primary[500],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 1.w),
-                                            width: 28.w,
-                                            height: 28.w,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xffFFE14B),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "LE",
-                                                style: body6BTextStyle(
-                                                  color: ColorConstants
-                                                      .primary[500],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                horizontal: 1.w),
-                                            width: 28.w,
-                                            height: 28.w,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xffFFE14B),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "LE",
-                                                style: body6BTextStyle(
-                                                  color: ColorConstants
-                                                      .primary[500],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(width: 8.w),
-                                          Text(
-                                            "+10 registered",
-                                            style: body6BTextStyle(),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 12.h),
+                                      content(
+                                          "Estimasi Jumlah\nPengunjung", "200"),
+                                      content("Biaya Tenant",
+                                          formatCurrency(500000)),
                                       Text(
                                         "Tags",
                                         style: body5BTextStyle(),
@@ -224,29 +177,8 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
                             padding: EdgeInsets.all(20.w),
                             child: AppButton(
                               width: 1.sw,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AppModal(
-                                    primaryText: "Ya",
-                                    secondaryText: "Batal",
-                                    description:
-                                        "Pastikan kamu telah membaca detail event sebelum mendaftar menjadi tenant.",
-                                    onPrimary: () {
-                                      Get.back();
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) => CardSurveySme(),
-                                      );
-                                    },
-                                    onSecondary: () {
-                                      Get.back();
-                                    },
-                                    title: "Konfirmasi Pendaftaran",
-                                  ),
-                                );
-                              },
-                              text: "Ikuti Event",
+                              onPressed: controller.handlePublikasi,
+                              text: "Publikasi Event",
                             ),
                           ),
                         ],
@@ -310,6 +242,29 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
           height: 1,
         ),
       ),
+    );
+  }
+
+  Widget content(String label, String content, [bool end = false]) {
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              label,
+              style: body5BTextStyle(),
+            ),
+            Text(
+              content,
+              textAlign: TextAlign.end,
+              style: body5TextStyle(),
+            ),
+          ],
+        ),
+        end ? Container() : SizedBox(height: 12.h),
+      ],
     );
   }
 }

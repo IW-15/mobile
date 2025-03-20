@@ -24,7 +24,10 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.0.17
   fluttertoast: ^8.2.12
+  geocoding: ^3.0.0
+  geolocator: ^13.0.3
   get: ^4.7.2
+  google_maps_flutter: ^2.11.0
   intl: ^0.20.2
   json_annotation: ^4.9.0
   json_serializable: ^6.9.4

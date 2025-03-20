@@ -10,12 +10,15 @@ class TalanganScaffold extends StatelessWidget {
   final String title;
   final bool leading;
   final Widget? action;
+  final bool scroll;
+
   const TalanganScaffold({
     super.key,
     required this.title,
     required this.child,
     this.leading = true,
     this.action,
+    this.scroll = true,
   });
 
   @override
@@ -35,12 +38,17 @@ class TalanganScaffold extends StatelessWidget {
               height: 100.h,
             ),
             Expanded(
-              child: ScrollableConstraints(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: child,
-                ),
-              ),
+              child: scroll
+                  ? ScrollableConstraints(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: child,
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: child,
+                    ),
             ),
           ],
         ),

@@ -65,4 +65,13 @@ class AppRoute {
   static String eventInvoice(String id) => "/event/detail/$id/invoice";
   static String eventPayment(String id) => "/event/detail/$id/payment";
   static String eventSuccess = "/event/registered-success";
+
+  // EO SIDE ====
+  static String eoEvent = "/eo/events";
+  static String eoCreateEvent = "/eo/events/create";
+  static String eoEventMap = "/eo/events/map";
+  static String eoEventDraft = "/eo/events/draft";
+  static String eoDetailEvent(String id) => "/eo/events/$id";
+  static String eoEditEvent(String id) => "/eo/events/$id/edit";
+  static String eoEventPublish(String id) => "/eo/events/$id/publish";
 }

@@ -11,6 +11,7 @@ class AppModal extends StatelessWidget {
   final VoidCallback onSecondary;
   final String? description;
   final String title;
+  final bool isError;
 
   const AppModal({
     super.key,
@@ -20,6 +21,7 @@ class AppModal extends StatelessWidget {
     required this.onSecondary,
     required this.title,
     this.description,
+    this.isError = false,
   });
 
   @override
@@ -68,6 +70,7 @@ class AppModal extends StatelessWidget {
                         onPressed: onPrimary,
                         text: primaryText,
                         textStyle: body4BTextStyle(color: Colors.white),
+                        color: isError ? ColorConstants.error : null,
                       ),
                     ),
                     SizedBox(width: 12.w),

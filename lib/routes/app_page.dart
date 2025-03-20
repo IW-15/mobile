@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
 import 'package:mobile/app/bindings/credit_score_bindings.dart';
+import 'package:mobile/app/bindings/eo_event_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
@@ -13,6 +14,12 @@ import 'package:mobile/app/presentation/view/cashflow_page.dart';
 import 'package:mobile/app/presentation/view/create_outlet_page.dart';
 import 'package:mobile/app/presentation/view/credit_score_page.dart';
 import 'package:mobile/app/presentation/view/detail_outlet_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_create_event_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_detail_event_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_event_draft_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_event_map_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_event_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_event_publish_page.dart';
 import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
@@ -271,6 +278,41 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.eventSuccess,
       page: () => SmeEventSuccessPage(),
       binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoEvent,
+      page: () => EoEventPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoCreateEvent,
+      page: () => EoCreateEventPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoEventMap,
+      page: () => EoEventMapPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoEventDraft,
+      page: () => EoEventDraftPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoDetailEvent(":id"),
+      page: () => EoDetailEventPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoEditEvent(":id"),
+      page: () => EoCreateEventPage(),
+      binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoEventPublish(":id"),
+      page: () => EoEventPublishPage(),
+      binding: EoEventBindings(),
     ),
   ];
 }
