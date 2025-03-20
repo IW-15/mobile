@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/sme_event_controller.dart';
 import 'package:mobile/app/presentation/partials/event/card_event.dart';
 import 'package:mobile/app/presentation/partials/event/card_event_nearby.dart';
+import 'package:mobile/app/presentation/partials/event/filter_event_search.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SmeEventSearchPage extends GetView<SmeEventController> {
   const SmeEventSearchPage({super.key});
@@ -17,6 +19,23 @@ class SmeEventSearchPage extends GetView<SmeEventController> {
     return Scaffold(
       body: TalanganScaffold(
         title: "Cari Events",
+        action: GestureDetector(
+          onTap: () {
+            showMaterialModalBottomSheet(
+              expand: false,
+              context: context,
+              backgroundColor: Colors.transparent,
+              builder: (context) {
+                return FilterEventSearch();
+              },
+            );
+          },
+          child: Icon(
+            Icons.filter_alt,
+            color: ColorConstants.primary[500],
+            size: 24.w,
+          ),
+        ),
         child: Column(
           children: [
             Container(

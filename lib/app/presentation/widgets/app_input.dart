@@ -30,6 +30,8 @@ class AppInput extends StatefulWidget {
   final TextStyle? labelStyle;
   final double? gap;
   final double? margin;
+  final VoidCallback? onFocus;
+  final VoidCallback? onUnFocus;
 
   const AppInput({
     super.key,
@@ -57,6 +59,8 @@ class AppInput extends StatefulWidget {
     this.gap,
     this.margin,
     this.labelStyle,
+    this.onFocus,
+    this.onUnFocus,
   });
 
   @override
@@ -91,6 +95,13 @@ class _AppInputState extends State<AppInput> {
     });
 
     _focus.addListener(() {
+      if (_focus.hasFocus && widget.onFocus != null) {
+        widget.onFocus!();
+      }
+      if (!_focus.hasFocus && widget.onUnFocus != null) {
+        widget.onUnFocus!();
+      }
+
       setState(() {
         isFocused = _focus.hasFocus ? true : false;
       });
