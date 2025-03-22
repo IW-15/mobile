@@ -4,6 +4,7 @@ import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
 import 'package:mobile/app/bindings/credit_score_bindings.dart';
 import 'package:mobile/app/bindings/eo_event_bindings.dart';
+import 'package:mobile/app/bindings/eo_home_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
@@ -20,6 +21,7 @@ import 'package:mobile/app/presentation/view/eo/eo_event_draft_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_event_map_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_event_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_event_publish_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_home_page.dart';
 import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
@@ -312,13 +314,18 @@ List<GetPage<dynamic>> appPage() {
     ),
     GetPage(
       name: AppRoute.eoEditEvent(":id"),
-      page: () => EoCreateEventPage(),
+      page: () => EoCreateEventPage(isEdit: true),
       binding: EoEventBindings(),
     ),
     GetPage(
       name: AppRoute.eoEventPublish(":id"),
       page: () => EoEventPublishPage(),
       binding: EoEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoHome,
+      page: () => EoHomePage(),
+      binding: EoHomeBindings(),
     ),
   ];
 }

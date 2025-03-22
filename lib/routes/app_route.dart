@@ -67,6 +67,7 @@ class AppRoute {
   static String eventSuccess = "/event/registered-success";
 
   // EO SIDE ====
+  static String eoHome = "/eo/home";
   static String eoEvent = "/eo/events";
   static String eoCreateEvent = "/eo/events/create";
   static String eoEventMap = "/eo/events/map";

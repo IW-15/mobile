@@ -29,7 +29,7 @@ class AppBottomBar extends StatelessWidget {
   ];
 
   final eo = [
-    [AppRoute.home, "assets/icons/home.svg", "Home"],
+    [AppRoute.eoHome, "assets/icons/home.svg", "Home"],
     [AppRoute.eoEvent, "assets/icons/event.svg", "Event"],
     [AppRoute.login, "assets/icons/katalog.svg", "Katalog"],
     [AppRoute.talangan, "assets/icons/store.svg", "Tenant"],
@@ -61,7 +61,6 @@ class AppBottomBar extends StatelessWidget {
                 if (!isSme && i == 2) {
                   return GestureDetector(
                     onTap: () {
-                      showAlert("LAHHH");
                       Get.toNamed(AppRoute.eoCreateEvent);
                     },
                     child: Container(
@@ -83,19 +82,19 @@ class AppBottomBar extends StatelessWidget {
                 }
                 return GestureDetector(
                   onTap: () {
-                    if (i == 1 || i == 2) {
+                    if (i == 2) {
                       return;
                     }
-                    if (i == 0 || i == 4) {
+                    if (i == 0 || i == 4 || i == 1) {
                       Get.toNamed(e[0]);
                       return;
                     }
 
-                    if (i == 3 &&
-                        GlobalController.i.merchant.value?.ktp != null) {
-                      Get.toNamed(e[0]);
-                      return;
-                    }
+                    // if (i == 3 &&
+                    //     GlobalController.i.merchant.value?.ktp != null) {
+                    //   Get.toNamed(e[0]);
+                    //   return;
+                    // }
 
                     Get.toNamed(AppRoute.loanOnboard);
                   },

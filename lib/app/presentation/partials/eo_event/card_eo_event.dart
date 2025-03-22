@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
+import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/stack_participant.dart';
+import 'package:mobile/extensions/string_extension.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/img.dart';
 
 class CardEoEvent extends StatelessWidget {
-  const CardEoEvent({super.key});
+  final EventModel data;
+  const CardEoEvent({
+    super.key,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoute.eoDetailEvent("5"));
+        Get.toNamed(AppRoute.eoDetailEvent(data.id.toString()));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 15.w),
@@ -27,8 +34,8 @@ class CardEoEvent extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(15.w),
-              child: Image.asset(
-                "assets/images/event_image_dummy.png",
+              child: Image.network(
+                img(data.banner),
                 height: 110.h,
                 width: 1.sw,
                 fit: BoxFit.cover,
@@ -42,19 +49,23 @@ class CardEoEvent extends StatelessWidget {
                   Row(
                     children: [
                       Container(
+                        width: 60.w,
                         padding: EdgeInsets.symmetric(
                             horizontal: 4.w, vertical: 2.w),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.w),
-                          color: ColorConstants.primary[400],
+                          color: data.status == "draft"
+                              ? ColorConstants.slate[400]
+                              : ColorConstants.primary[400],
                         ),
                         child: Text(
-                          "On Going",
+                          data.status.toCapitalized,
                           style: body6TextStyle(
                             size: 8.w,
                             weight: FontWeight.w500,
                             color: Colors.white,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(width: 8.w),
@@ -66,12 +77,12 @@ class CardEoEvent extends StatelessWidget {
                   ),
                   SizedBox(height: 3.h),
                   Text(
-                    "Livia’s Bazaar: Soy Day",
+                    data.name,
                     style: body4TextStyle(),
                   ),
                   SizedBox(height: 2.h),
                   Text(
-                    "Banjarmasin, Kalimantan Selatan",
+                    data.location,
                     style: body6TextStyle(),
                     overflow: TextOverflow.ellipsis,
                   ),

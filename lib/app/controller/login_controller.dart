@@ -43,10 +43,10 @@ class LoginController extends GetxController {
         UserToken.setToken(token);
         Global.setUser(userType);
 
-        showAlert("Login succeed", isSuccess: true);
         await closeLoading(isLoading);
+        showAlert("Login succeed", isSuccess: true);
 
-        // Get.offAllNamed(AppRoute.home);
+        Get.offAllNamed(Global.isSme() ? AppRoute.home : AppRoute.eoHome);
       } catch (error) {
         showAlert(error.toString());
         await closeLoading(isLoading);

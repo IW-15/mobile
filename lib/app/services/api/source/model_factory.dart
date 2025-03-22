@@ -1,12 +1,16 @@
 import 'package:mobile/app/models/cashflow/cashflow_model.dart';
 import 'package:mobile/app/models/common/base_model.dart';
 import 'package:mobile/app/models/credit_score/credit_score_model.dart';
+import 'package:mobile/app/models/eo/eo_model.dart';
+import 'package:mobile/app/models/event/event_model.dart';
+import 'package:mobile/app/models/event/event_response.dart';
 import 'package:mobile/app/models/loan/loan_model.dart';
 import 'package:mobile/app/models/loan_profile/loan_profile_model.dart';
 import 'package:mobile/app/models/merchant/merchant_model.dart';
 import 'package:mobile/app/models/merchant_verify/merchant_verify_model.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/models/outlet_revenue/outlet_revenue_model.dart';
+import 'package:mobile/app/models/profile/eo_profile_model.dart';
 import 'package:mobile/app/models/profile/profile_model.dart';
 import 'package:mobile/app/models/repayment/repayment_model.dart';
 import 'package:mobile/app/models/transaction/transaction_model.dart';
@@ -42,6 +46,14 @@ abstract class ModelFactory {
       return CreditScoreModel.fromJson(json);
     } else if (strType == (MerchantVerifyModel).toString()) {
       return MerchantVerifyModel.fromJson(json);
+    } else if (strType == (EoModel).toString()) {
+      return EoModel.fromJson(json);
+    } else if (strType == (EoProfileModel).toString()) {
+      return EoProfileModel.fromJson(json);
+    } else if (strType == (EventModel).toString()) {
+      return EventModel.fromJson(json);
+    } else if (strType == (EventsResponse).toString()) {
+      return EventsResponse.fromJson(json);
     }
 
     throw UnimplementedError();

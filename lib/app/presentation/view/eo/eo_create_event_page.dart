@@ -14,7 +14,11 @@ import 'package:mobile/utils/datepicker.dart';
 import 'package:mobile/utils/input_validator.dart';
 
 class EoCreateEventPage extends GetView<EoDetailEventController> {
-  const EoCreateEventPage({super.key});
+  final bool isEdit;
+  const EoCreateEventPage({
+    super.key,
+    this.isEdit = false,
+  });
 
   @override
   Widget build(BuildContext context) {

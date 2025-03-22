@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/bindings/global_bindings.dart';
 import 'package:mobile/firebase_options.dart';
+import 'package:mobile/global_settings.dart';
 import 'package:mobile/routes/app_page.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/utils/app_token.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+  Global.type = UserVariant.sme;
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -42,7 +44,7 @@ class MainApp extends StatelessWidget {
                   title: dotenv.env['PROJECT_TITLE']!,
                   theme: globalTheme(),
                   getPages: appPage(),
-                  initialRoute: AppRoute.landing,
+                  initialRoute: AppRoute.eoHome,
                   builder: (context, child) {
                     return MediaQuery(
                       data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

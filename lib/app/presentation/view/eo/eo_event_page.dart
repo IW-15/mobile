@@ -14,6 +14,10 @@ class EoEventPage extends GetView<EoEventController> {
 
   @override
   Widget build(BuildContext context) {
+    // var aa = controller.events.keys.map((e) {
+    //   return e;
+    // });
+
     return Scaffold(
       bottomNavigationBar: AppBottomBar(
         route: AppRoute.talangan,
@@ -40,9 +44,10 @@ class EoEventPage extends GetView<EoEventController> {
                       (List<String> e) => CardFilterTag(
                         label: e[0],
                         value: e[1],
-                        current: controller.filter.value,
+                        current: controller.filter['filter']!,
                         onChange: (e) {
-                          controller.filter.value = e;
+                          controller.filter['filter'] = e;
+                          controller.filter.refresh();
                         },
                       ),
                     ),
@@ -57,43 +62,71 @@ class EoEventPage extends GetView<EoEventController> {
                     "Daftar event",
                     style: body3BTextStyle(),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 6.w,
-                      vertical: 3.w,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xffDCE4FC),
-                      borderRadius: BorderRadius.circular(8.w),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Date",
-                          style: body5TextStyle(
-                            weight: FontWeight.w600,
-                            color: Colors.black,
+                  GestureDetector(
+                    onTap: () {
+                      controller.filter['date'] =
+                          controller.filter['date'] == "asc" ? "desc" : "asc";
+                      controller.filter.refresh();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 6.w,
+                        vertical: 3.w,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Color(0xffDCE4FC),
+                        borderRadius: BorderRadius.circular(8.w),
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Date",
+                            style: body5TextStyle(
+                              weight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 4.w),
-                        Icon(
-                          Icons.arrow_downward,
-                          size: 14.w,
-                        ),
-                      ],
+                          SizedBox(width: 4.w),
+                          Icon(
+                            controller.filter['date'] == "desc"
+                                ? Icons.arrow_downward
+                                : Icons.arrow_upward,
+                            size: 14.w,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 16.w),
+              controller.events.keys.isEmpty
+                  ? Expanded(
+                      child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/not-found.png",
+                          width: 250.w,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: 12.h),
+                        Text(
+                          "Tidak ada data event tersedia",
+                          style: body4TextStyle(),
+                        ),
+                      ],
+                    ))
+                  : Container(),
+              // controller.events.keys.isEmpty ? Container() : Container,
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: [
-                      EoDateCategoricalEvent(),
-                      EoDateCategoricalEvent(),
-                      EoDateCategoricalEvent(),
-                    ],
+                    children: controller.events.keys
+                        .map((key) => EoDateCategoricalEvent(
+                            event: controller.events[key],
+                            date: DateTime.parse(key)))
+                        .toList(),
                   ),
                 ),
               ),
