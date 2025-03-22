@@ -21,7 +21,7 @@ EventModel _$EventModelFromJson(Map<String, dynamic> json) => EventModel(
       tenantNumber: (json['tenantNumber'] as num).toInt(),
       tenantPrice: (json['tenantPrice'] as num).toInt(),
       description: json['description'] as String,
-      status: (json['status'] ?? "draft") as String,
+      status: json['status'] as String,
       pic: json['pic'] as String,
       banner: json['banner'] as String,
       picNumber: json['picNumber'] as String,

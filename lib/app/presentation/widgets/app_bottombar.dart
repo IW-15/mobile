@@ -2,13 +2,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/global_controller.dart';
-import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/extensions/map_indexed.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
-import 'package:mobile/utils/show_alert.dart';
 
 class AppBottomBar extends StatelessWidget {
   final String route;
@@ -32,7 +29,7 @@ class AppBottomBar extends StatelessWidget {
     [AppRoute.eoHome, "assets/icons/home.svg", "Home"],
     [AppRoute.eoEvent, "assets/icons/event.svg", "Event"],
     [AppRoute.login, "assets/icons/katalog.svg", "Katalog"],
-    [AppRoute.talangan, "assets/icons/store.svg", "Tenant"],
+    [AppRoute.login, "assets/icons/store.svg", "Tenant"],
     [AppRoute.setting, "assets/icons/setting.svg", "Setting"],
   ];
 
@@ -90,13 +87,7 @@ class AppBottomBar extends StatelessWidget {
                       return;
                     }
 
-                    // if (i == 3 &&
-                    //     GlobalController.i.merchant.value?.ktp != null) {
-                    //   Get.toNamed(e[0]);
-                    //   return;
-                    // }
-
-                    Get.toNamed(AppRoute.loanOnboard);
+                    // Get.toNamed(AppRoute.loanOnboard);
                   },
                   child: Column(
                     children: [

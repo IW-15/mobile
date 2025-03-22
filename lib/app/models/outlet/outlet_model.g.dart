@@ -25,6 +25,8 @@ OutletModel _$OutletModelFromJson(Map<String, dynamic> json) => OutletModel(
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      eventOpen: json['eventOpen'] as bool,
+      score: json['score'] as String,
     );
 
 Map<String, dynamic> _$OutletModelToJson(OutletModel instance) =>
@@ -42,4 +44,6 @@ Map<String, dynamic> _$OutletModelToJson(OutletModel instance) =>
       'rekening': instance.rekening,
       'address': instance.address,
       'revenue': instance.revenue,
+      'eventOpen': instance.eventOpen,
+      'score': instance.score,
     };

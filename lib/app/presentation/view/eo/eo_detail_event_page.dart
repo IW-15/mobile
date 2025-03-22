@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/eo/eo_detail_event_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
+import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 import 'package:mobile/utils/format_currency.dart';
@@ -225,12 +226,28 @@ class EoDetailEventPage extends GetView<EoDetailEventController> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        [Icons.mail, "Undang Tenant"],
-                                        [Icons.store, "List Tenant"]
+                                        [
+                                          Icons.mail,
+                                          "Undang Tenant",
+                                          AppRoute.eoAvailableTenants(
+                                            controller.data.value!.id
+                                                .toString(),
+                                          )
+                                        ],
+                                        [
+                                          Icons.store,
+                                          "List Tenant",
+                                          AppRoute.eoRegisteredTenants(
+                                            controller.data.value!.id
+                                                .toString(),
+                                          )
+                                        ]
                                       ]
                                           .map(
                                             (e) => GestureDetector(
-                                              onTap: () {},
+                                              onTap: () {
+                                                Get.toNamed(e[2] as String);
+                                              },
                                               child: Column(
                                                 children: [
                                                   Container(

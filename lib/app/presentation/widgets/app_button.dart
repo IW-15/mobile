@@ -52,7 +52,7 @@ class AppButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color ??
             (onPressed == null
-                ? ColorConstants.slate[300]
+                ? ColorConstants.slate[200]
                 : variant == AppButtonVariant.primary
                     ? ColorConstants.primary[500]
                     : Color(0xffDFE6FF)),
@@ -89,9 +89,11 @@ class AppButton extends StatelessWidget {
               text,
               style: textStyle ??
                   body3BTextStyle(
-                    color: variant == AppButtonVariant.primary
+                    color: onPressed == null
                         ? Colors.white
-                        : ColorConstants.primary[500],
+                        : variant == AppButtonVariant.primary
+                            ? Colors.white
+                            : ColorConstants.primary[500],
                     weight: FontWeight.w600,
                   ),
             ),
