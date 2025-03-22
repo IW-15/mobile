@@ -39,6 +39,7 @@ import 'package:mobile/app/presentation/view/outlet_page.dart';
 import 'package:mobile/app/presentation/view/register_email_page.dart';
 import 'package:mobile/app/presentation/view/register_eo_confirm_page.dart';
 import 'package:mobile/app/presentation/view/register_eo_page.dart';
+import 'package:mobile/app/presentation/view/register_eo_success_page.dart';
 import 'package:mobile/app/presentation/view/register_password_confirm_page.dart';
 import 'package:mobile/app/presentation/view/register_password_page.dart';
 import 'package:mobile/app/presentation/view/register_phone_page.dart';
@@ -170,6 +171,11 @@ List<GetPage<dynamic>> appPage() {
     GetPage(
       name: AppRoute.registerSuccess,
       page: () => RegisterSuccessPage(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoute.registerEoSuccess,
+      page: () => RegisterEoSuccessPage(),
       binding: AuthBinding(),
     ),
     GetPage(

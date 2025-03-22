@@ -16,9 +16,7 @@ String? validatePhoneNumber(String? value) {
   }
 
   // Ekspresi reguler untuk memvalidasi nomor telepon Indonesia
-  final RegExp phoneRegex = RegExp(
-    r'^(?:\+62|0)8\d{2,3}\s?\d{4,5}\s?\d{0,5}$',
-  );
+  final RegExp phoneRegex = RegExp(r'^08[0-9]{8,10}$');
 
   if (!phoneRegex.hasMatch(value)) {
     return 'Silakan masukkan nomor telepon yang valid';

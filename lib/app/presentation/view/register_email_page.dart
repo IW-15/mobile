@@ -60,6 +60,7 @@ class RegisterEmailPage extends GetView<RegisterController> {
                   ),
                   SizedBox(height: 20.h),
                   AppInput(
+                    keyboardType: TextInputType.emailAddress,
                     validator: controller.emailValidator,
                     controller: controller.form['email']!,
                     label: "Email",

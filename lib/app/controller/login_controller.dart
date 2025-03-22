@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/presentation/widgets/app_loading.dart';
 import 'package:mobile/app/repository/auth_repo.dart';
+import 'package:mobile/global_settings.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/utils/app_token.dart';
 import 'package:mobile/utils/show_alert.dart';
@@ -35,13 +36,19 @@ class LoginController extends GetxController {
           "phone": form['phone']!.text.trim(),
           "password": form['password']!.text.trim(),
         };
-        var token = await AuthRepo.login(inputForm);
+        var res = await AuthRepo.login(inputForm);
+        final token = res['token']!;
+        final userType = res['type']!;
+
         UserToken.setToken(token);
+        Global.setUser(userType);
+
         showAlert("Login succeed", isSuccess: true);
         await closeLoading(isLoading);
 
-        Get.offAllNamed(AppRoute.home);
+        // Get.offAllNamed(AppRoute.home);
       } catch (error) {
+        showAlert(error.toString());
         await closeLoading(isLoading);
       }
     }

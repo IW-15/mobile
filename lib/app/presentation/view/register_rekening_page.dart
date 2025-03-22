@@ -69,6 +69,7 @@ class RegisterRekeningPage extends GetView<RegisterController> {
                   onChange: (e) {
                     controller.form.refresh();
                   },
+                  keyboardType: TextInputType.number,
                 ),
                 SizedBox(height: 12.h),
                 AppInput(

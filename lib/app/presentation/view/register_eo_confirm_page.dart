@@ -89,9 +89,7 @@ class RegisterEoConfirmPage extends GetView<RegisterController> {
                           secondaryText: "Kembali",
                           description:
                               "Pastikan datanya sudah benar dan sesuai demi kelancaran proses pendaftaran. Jika ada yang salah, hubungi Call Center 14021 atau agen kantor Cabang Bank Mandiri.",
-                          onPrimary: () {
-                            Get.back();
-                          },
+                          onPrimary: controller.registerEo,
                           onSecondary: () {
                             Get.back();
                           },

@@ -135,7 +135,11 @@ class RegisterController extends GetxController {
   }
 
   void registerPasswordConfirm() async {
-    Get.toNamed(AppRoute.registerUsaha);
+    if (isUMKM.value) {
+      Get.toNamed(AppRoute.registerUsaha);
+      return;
+    }
+    Get.toNamed(AppRoute.registerEo);
   }
 
   void register() async {
@@ -185,5 +189,28 @@ class RegisterController extends GetxController {
     }
   }
 
-  void registerEo() {}
+  void registerEo() async {
+    try {
+      showLoadingDialog(Get.context!, isLoading);
+      final inputForm = {
+        "email": form['email']!.text,
+        "phone": form['phone']!.text,
+        "password": form['password']!.text,
+        "password_confirmation": form['password_confirmation']!.text,
+        "rekening": form['rekening']!.text,
+        "companyName": formEo['name']!.text,
+        "companyNib": formEo['nib']!.text,
+        "companyPic": formEo['pic']!.text,
+        "companyPicPhone": formEo['picPhone']!.text,
+        "companyPicEmail": formEo['email']!.text,
+        "companyAddress": formEo['address']!.text,
+      };
+      await AuthRepo.registerEo(inputForm);
+
+      await closeLoading(isLoading);
+      Get.offAllNamed(AppRoute.registerEoSuccess);
+    } catch (_) {
+      await closeLoading(isLoading);
+    }
+  }
 }

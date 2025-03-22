@@ -45,7 +45,21 @@ class AuthRepo {
     }
   }
 
-  static Future<String> login(Map<String, String> data) async {
+  static Future<UserModel> registerEo(Map<String, String> data) async {
+    try {
+      var res = await fetchData<UserModel>(
+        url: "/api/auth/signup-eo",
+        method: RequestMethod.POST,
+        data: data,
+      );
+
+      return res.data!;
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> login(Map<String, String> data) async {
     try {
       var res = await fetchData(
         url: "/api/auth/signin",
@@ -53,7 +67,7 @@ class AuthRepo {
         data: data,
       );
 
-      return res.data['token'];
+      return res.data as Map<String, dynamic>;
     } catch (err) {
       rethrow;
     }

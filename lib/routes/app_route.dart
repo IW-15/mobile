@@ -20,7 +20,7 @@ class AppRoute {
   static String registerEoConfirm = "/register/eo/confirm"; // 4
 
   static String registerSuccess = "/register/success";
-
+  static String registerEoSuccess = "/register/eo/success";
   static String home = "/home";
 
   // Talangan
