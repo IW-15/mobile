@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/models/outlet_revenue/outlet_revenue_model.dart';
 import 'package:mobile/app/services/api/fetch_data.dart';
@@ -28,7 +29,7 @@ class OutletRepo {
     }
   }
 
-  static Future<OutletModel> create(Map<String, dynamic> data) async {
+  static Future<OutletModel> create(FormData data) async {
     try {
       final res = await fetchData<OutletModel>(
         url: "/api/outlet",
@@ -41,11 +42,11 @@ class OutletRepo {
     }
   }
 
-  static Future<OutletModel> edit(String id, Map<String, dynamic> data) async {
+  static Future<OutletModel> edit(String id, FormData data) async {
     try {
       final res = await fetchData<OutletModel>(
-        url: "/api/outlet/$id",
-        method: RequestMethod.PUT,
+        url: "/api/outlet/$id/update",
+        method: RequestMethod.POST,
         data: data,
       );
       return res.data!;

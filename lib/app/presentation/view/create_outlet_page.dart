@@ -6,6 +6,7 @@ import 'package:mobile/app/controller/global_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/app_dropdown.dart';
 import 'package:mobile/app/presentation/widgets/app_input.dart';
+import 'package:mobile/app/presentation/widgets/app_input_file.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
 import 'package:mobile/utils/input_validator.dart';
 
@@ -56,22 +57,12 @@ class CreateOutletPage extends GetView<CreateOutletController> {
                   validator: (e) => inputValidator(e, "Pendapatan"),
                 ),
                 SizedBox(height: 16.h),
-                AppDropdown(
-                  value: controller.type.value,
+                AppInput(
+                  controller: controller.form['type']!,
                   label: "Tipe",
                   placeholder: "Input Type Outlet",
+                  textInputAction: TextInputAction.next,
                   validator: (e) => inputValidator(e, "Tipe Outlet"),
-                  onChanged: (e) {
-                    if (e != null) {
-                      controller.type.value = e;
-                      controller.form['type']!.text = e;
-                    }
-                  },
-                  items: [
-                    AppDropdownItem(
-                        text: "Perseorangan", value: "Perseorangan"),
-                    AppDropdownItem(text: "Badan Usaha", value: "Badan Usaha"),
-                  ],
                 ),
                 SizedBox(height: 16.h),
                 AppInput(
@@ -106,6 +97,14 @@ class CreateOutletPage extends GetView<CreateOutletController> {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   maxLines: 5,
+                ),
+                SizedBox(height: 16.h),
+                AppInputFile(
+                  extensions: ['jpg', 'jpeg', 'png'],
+                  label: "Foto Outlet",
+                  file: controller.image.value,
+                  onChange: controller.handleChangeImage,
+                  onRemove: controller.handleRemoveImage,
                 ),
                 SizedBox(height: 20.h),
                 Expanded(child: Container()),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mobile/app/controller/eo/eo_home_controller.dart';
 import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/app/repository/eo_event_repo.dart';
 
@@ -16,6 +17,7 @@ class EoEventController extends GetxController {
     try {
       final res = await EoEventRepo.getALl(filter);
       events.value = res.events!;
+      EoHomeController.i.getEventData();
     } catch (_) {}
   }
 

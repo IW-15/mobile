@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/eo/eo_detail_event_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
+import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -48,7 +49,7 @@ class EoEventDraftPage extends GetView<EoDetailEventController> {
             AppButton(
               width: 1.sw,
               onPressed: () {
-                Get.back();
+                Get.toNamed(AppRoute.eoEvent);
               },
               text: "Kembali",
             ),

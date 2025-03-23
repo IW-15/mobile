@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/eo/eo_available_tenants_controller.dart';
 import 'package:mobile/app/presentation/partials/eo_event/card_available_tenant.dart';
 import 'package:mobile/app/presentation/widgets/app_bottombar.dart';
+import 'package:mobile/app/presentation/widgets/not_found.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
@@ -28,6 +29,7 @@ class EoAvailableTenantsPage extends GetView<EoAvailableTenantsController> {
         ),
         child: Obx(
           () => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
@@ -71,11 +73,17 @@ class EoAvailableTenantsPage extends GetView<EoAvailableTenantsController> {
               SizedBox(height: 20.h),
               headerSection("Tenant Sebelumnya"),
               SizedBox(height: 14.h),
+              controller.outlets.isEmpty
+                  ? NotFound(
+                      title: "Tidak ada data",
+                      description: "Tidak ada data tenants yang tersedia")
+                  : Container(),
               SingleChildScrollView(
                 clipBehavior: Clip.none,
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: controller.outlets
                       .map((e) => CardAvailableTenant(data: e))
                       .toList(),
@@ -83,12 +91,18 @@ class EoAvailableTenantsPage extends GetView<EoAvailableTenantsController> {
               ),
               SizedBox(height: 20.h),
               headerSection("Kategori Relevan"),
+              controller.outlets.isEmpty
+                  ? NotFound(
+                      title: "Tidak ada data",
+                      description: "Tidak ada data tenants yang tersedia")
+                  : Container(),
               SizedBox(height: 14.h),
               SingleChildScrollView(
                 clipBehavior: Clip.none,
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: controller.outlets
                       .map((e) => CardAvailableTenant(data: e))
                       .toList(),
@@ -96,12 +110,18 @@ class EoAvailableTenantsPage extends GetView<EoAvailableTenantsController> {
               ),
               SizedBox(height: 20.h),
               headerSection("Usaha Terdekat"),
+              controller.outlets.isEmpty
+                  ? NotFound(
+                      title: "Tidak ada data",
+                      description: "Tidak ada data tenants yang tersedia")
+                  : Container(),
               SizedBox(height: 14.h),
               SingleChildScrollView(
                 clipBehavior: Clip.none,
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: controller.outlets
                       .map((e) => CardAvailableTenant(data: e))
                       .toList(),

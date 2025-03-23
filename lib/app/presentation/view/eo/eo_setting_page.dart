@@ -92,7 +92,6 @@ class EoSettingPage extends GetView<EoHomeController> {
               child: Column(
                 children: [
                   element(
-                    path: AppRoute.outlet,
                     name: "Bahasa",
                     desc: "Atur bahasa utama aplikasimu",
                   ),

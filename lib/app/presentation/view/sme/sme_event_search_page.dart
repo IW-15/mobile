@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/sme_event_controller.dart';
+import 'package:mobile/app/controller/sme/sme_event_controller.dart';
 import 'package:mobile/app/presentation/partials/event/card_event.dart';
 import 'package:mobile/app/presentation/partials/event/card_event_nearby.dart';
 import 'package:mobile/app/presentation/partials/event/filter_event_search.dart';
@@ -116,9 +116,10 @@ class SmeEventSearchPage extends GetView<SmeEventController> {
                 enlargeCenterPage: true,
                 enlargeFactor: .25,
                 clipBehavior: Clip.none,
+                enableInfiniteScroll: false,
               ),
-              items: [1, 2, 3, 4, 5].map((i) {
-                return CardEventNearby();
+              items: controller.events.map((e) {
+                return CardEventNearby(data: e);
               }).toList(),
             ),
             SizedBox(height: 20.h),
@@ -149,11 +150,7 @@ class SmeEventSearchPage extends GetView<SmeEventController> {
               ],
             ),
             SizedBox(height: 12.h),
-            CardEvent(),
-            CardEvent(),
-            CardEvent(),
-            CardEvent(),
-            CardEvent(),
+            ...controller.events.map((e) => CardEvent(data: e))
           ],
         ),
       ),

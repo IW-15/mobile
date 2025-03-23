@@ -1,5 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:mobile/app/controller/detail_outlet_controller.dart';
 import 'package:mobile/app/controller/outlet_controller.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
@@ -7,6 +9,8 @@ import 'package:mobile/app/presentation/widgets/app_loading.dart';
 import 'package:mobile/app/repository/outlet_repo.dart';
 import 'package:mobile/utils/get_id.dart';
 import 'package:mobile/utils/show_alert.dart';
+import 'package:get/get.dart' hide FormData, MultipartFile;
+import 'package:dio/dio.dart' show FormData, MultipartFile;
 
 class CreateOutletController extends GetxController {
   static CreateOutletController get i => Get.find<CreateOutletController>();
@@ -40,6 +44,18 @@ class CreateOutletController extends GetxController {
   RxnString id_revenue = RxnString();
 
   RxBool isLoading = false.obs;
+  Rxn<File> image = Rxn<File>();
+
+  void handleChangeImage(File? e) {
+    if (e == null) {
+      return;
+    }
+    image.value = e;
+  }
+
+  void handleRemoveImage() {
+    image.value = null;
+  }
 
   void submit() async {
     if (formKey.currentState!.validate()) {
@@ -52,9 +68,11 @@ class CreateOutletController extends GetxController {
           "phone": form["phone"]!.text,
           "email": form["email"]!.text,
           "address": form["address"]!.text,
+          'image': await MultipartFile.fromFile(image.value!.path),
         };
 
-        await OutletRepo.create(inputForm);
+        final formData = FormData.fromMap(inputForm);
+        await OutletRepo.create(formData);
         showAlert("Success add outlet", isSuccess: true);
         OutletController.i.getAllOutlets();
         await closeLoading(isLoading);
@@ -77,9 +95,11 @@ class CreateOutletController extends GetxController {
           "type": form["type"]!.text,
           "phone": form["phone"]!.text,
           "address": form["address"]!.text,
+          'image': await MultipartFile.fromFile(image.value!.path),
         };
 
-        await OutletRepo.edit(getId(), inputForm);
+        final formData = FormData.fromMap(inputForm);
+        await OutletRepo.edit(getId(), formData);
         showAlert("Success edit outlet", isSuccess: true);
         DetailOutletController.i.getOutletData();
         OutletController.i.getAllOutlets();

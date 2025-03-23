@@ -20,6 +20,7 @@ class OutletModel extends BaseModel implements ModelFactory {
   final OutletRevenueModel? revenue;
   final bool eventOpen;
   final String score;
+  final String image;
 
   const OutletModel({
     required this.address,
@@ -37,6 +38,7 @@ class OutletModel extends BaseModel implements ModelFactory {
     required super.updated_at,
     required this.eventOpen,
     required this.score,
+    required this.image,
   });
 
   factory OutletModel.fromJson(Map<String, dynamic> json) =>

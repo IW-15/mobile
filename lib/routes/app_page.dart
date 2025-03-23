@@ -60,6 +60,7 @@ import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_invoice_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_event_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_payment_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_registered_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_search_page.dart';
@@ -352,6 +353,11 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.eoCashflow,
       page: () => EoCashflowPage(),
       binding: EoCashflowBindings(),
+    ),
+    GetPage(
+      name: AppRoute.smeEvent,
+      page: () => SmeEventPage(),
+      binding: SmeEventBindings(),
     ),
   ];
 }

@@ -7,6 +7,7 @@ import 'package:mobile/app/controller/eo/eo_home_controller.dart';
 import 'package:mobile/app/presentation/partials/eo_event/card_event_home.dart';
 import 'package:mobile/app/presentation/partials/home/card_event_insight.dart';
 import 'package:mobile/app/presentation/widgets/app_bottombar.dart';
+import 'package:mobile/app/presentation/widgets/not_found.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
@@ -18,6 +19,8 @@ class EoHomePage extends GetView<EoHomeController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getEventData();
+
     return Scaffold(
       bottomNavigationBar: AppBottomBar(
         route: AppRoute.eoHome,
@@ -157,25 +160,31 @@ class EoHomePage extends GetView<EoHomeController> {
               style: h5BTextStyle(color: ColorConstants.primary[50]),
             ),
             SizedBox(height: 12.h),
-            Container(
-              height: 180.h,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.w),
-                boxShadow: [
-                  ColorConstants.shadow[1]!,
-                ],
-              ),
-              child: CarouselSlider(
-                items: controller.event
-                    .map((e) => CardEventHome(data: e))
-                    .toList(),
-                options: CarouselOptions(
-                  height: 180.w,
-                  viewportFraction: 1,
-                ),
-              ),
-            ),
+            controller.event.isEmpty
+                ? NotFound(
+                    title: "Tidak ada event",
+                    description: "Silakan buat event terlebih dahulu",
+                    small: true,
+                  )
+                : Container(
+                    height: 180.h,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.w),
+                      boxShadow: [
+                        ColorConstants.shadow[1]!,
+                      ],
+                    ),
+                    child: CarouselSlider(
+                      items: controller.event
+                          .map((e) => CardEventHome(data: e))
+                          .toList(),
+                      options: CarouselOptions(
+                        height: 180.w,
+                        viewportFraction: 1,
+                      ),
+                    ),
+                  ),
             SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

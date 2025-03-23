@@ -93,6 +93,54 @@ class EoCashflowPage extends GetView<EoCashflowController> {
                       style: body4BTextStyle(),
                     ),
                   ),
+                  SizedBox(
+                    height: 200.h,
+                    child: SfCartesianChart(
+                      palette: controller.palette,
+                      primaryXAxis: CategoryAxis(),
+                      legend: Legend(isVisible: true),
+                      tooltipBehavior: TooltipBehavior(enable: true),
+                      series: <CartesianSeries<SalesData, String>>[
+                        SplineSeries<SalesData, String>(
+                          enableTooltip: true,
+                          enableTrackball: true,
+                          dataSource: controller.allSalesData,
+                          xValueMapper: (SalesData sales, _) => sales.month,
+                          yValueMapper: (SalesData sales, _) => sales.data,
+                          name: 'Sales',
+                          // Enable data label
+                          dataLabelSettings: DataLabelSettings(
+                            isVisible: true,
+                          ),
+                          markerSettings: MarkerSettings(
+                            color: Colors.red,
+                          ),
+                          legendItemText: "Sales",
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20.h),
+            Container(
+              padding: EdgeInsets.all(9.w),
+              decoration: BoxDecoration(
+                color: ColorConstants.slate[25],
+                borderRadius: BorderRadius.circular(15.w),
+                boxShadow: [ColorConstants.shadow[1]!],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: Text(
+                      "Kategori Event",
+                      style: body4BTextStyle(),
+                    ),
+                  ),
                   Row(
                     children: [
                       Flexible(
@@ -194,54 +242,6 @@ class EoCashflowPage extends GetView<EoCashflowController> {
                         ],
                       ),
                     ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Container(
-              padding: EdgeInsets.all(9.w),
-              decoration: BoxDecoration(
-                color: ColorConstants.slate[25],
-                borderRadius: BorderRadius.circular(15.w),
-                boxShadow: [ColorConstants.shadow[1]!],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(10.w),
-                    child: Text(
-                      "Kategori Event",
-                      style: body4BTextStyle(),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 200.h,
-                    child: SfCartesianChart(
-                      palette: controller.palette,
-                      primaryXAxis: CategoryAxis(),
-                      legend: Legend(isVisible: true),
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <CartesianSeries<SalesData, String>>[
-                        SplineSeries<SalesData, String>(
-                          enableTooltip: true,
-                          enableTrackball: true,
-                          dataSource: controller.allSalesData,
-                          xValueMapper: (SalesData sales, _) => sales.month,
-                          yValueMapper: (SalesData sales, _) => sales.data,
-                          name: 'Sales',
-                          // Enable data label
-                          dataLabelSettings: DataLabelSettings(
-                            isVisible: true,
-                          ),
-                          markerSettings: MarkerSettings(
-                            color: Colors.red,
-                          ),
-                          legendItemText: "Sales",
-                        ),
-                      ],
-                    ),
                   ),
                 ],
               ),

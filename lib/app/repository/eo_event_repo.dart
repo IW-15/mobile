@@ -23,7 +23,7 @@ class EoEventRepo {
   static Future<List<EventModel>> getALlNoGroup(
       [Map<String, dynamic> filter = const {
         "date": "desc",
-        "filter": "published",
+        "filter": "all",
         "group": "no"
       }]) async {
     try {

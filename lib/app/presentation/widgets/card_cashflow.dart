@@ -36,7 +36,6 @@ class CardCashflow extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.w),
-              boxShadow: [ColorConstants.shadow[1]!],
             ),
             child: Column(
               children: [
@@ -67,7 +66,6 @@ class CardCashflow extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.w),
-              boxShadow: [ColorConstants.shadow[1]!],
             ),
             child: Column(
               children: [

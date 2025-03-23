@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/format_date.dart';
+import 'package:mobile/utils/img.dart';
 
 class CardEventNearby extends StatelessWidget {
-  const CardEventNearby({super.key});
+  final EventModel data;
+  const CardEventNearby({
+    super.key,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +30,10 @@ class CardEventNearby extends StatelessWidget {
         height: 1.sh,
         child: Stack(
           children: [
-            Image.asset(
-              "assets/images/event_image_dummy.png",
+            Image.network(
+              img(data.banner),
               height: 1000,
+              width: 1.sw,
               fit: BoxFit.cover,
             ),
             Positioned.fill(
@@ -52,7 +60,7 @@ class CardEventNearby extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      "Festival Bazar Ramah",
+                      data.name,
                       style: body4BTextStyle(color: Colors.white),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -66,7 +74,7 @@ class CardEventNearby extends StatelessWidget {
                         ),
                         SizedBox(width: 4.w),
                         Text(
-                          "19 Maret 2025",
+                          formatDate(data.date),
                           style: body6TextStyle(
                             color: Colors.white,
                           ),
@@ -83,12 +91,15 @@ class CardEventNearby extends StatelessWidget {
                           size: 18.w,
                         ),
                         SizedBox(width: 4.w),
-                        Text(
-                          "Lapangan simatupang Indonesia",
-                          style: body6TextStyle(
-                            color: Colors.white,
+                        Flexible(
+                          child: Text(
+                            data.location,
+                            style: body6TextStyle(
+                              color: Colors.white,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),

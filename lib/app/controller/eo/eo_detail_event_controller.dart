@@ -64,10 +64,7 @@ class EoDetailEventController extends GetxController {
         EoEventController.i.getAllEvent();
 
         await closeLoading(isLoading);
-        Get.offNamedUntil(
-          AppRoute.eoEventDraft,
-          ModalRoute.withName(AppRoute.eoEvent),
-        );
+        Get.toNamed(AppRoute.eoEventDraft);
       } catch (error) {}
       await closeLoading(isLoading);
     }

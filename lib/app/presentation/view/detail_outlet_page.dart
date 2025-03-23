@@ -10,6 +10,7 @@ import 'package:mobile/app/presentation/widgets/app_modal.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/utils/get_id.dart';
+import 'package:mobile/utils/img.dart';
 
 class DetailOutletPage extends GetView<DetailOutletController> {
   const DetailOutletPage({super.key});
@@ -22,6 +23,18 @@ class DetailOutletPage extends GetView<DetailOutletController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Obx(() => controller.data.value != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(10.w),
+                    child: Image.network(
+                      img(controller.data.value!.image),
+                      height: 150.h,
+                      width: 1.sw,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Container()),
+            SizedBox(height: 10.h),
             Obx(
               () => controller.data.value == null
                   ? Container()

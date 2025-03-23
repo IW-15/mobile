@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/sme_detail_event_controller.dart';
-import 'package:mobile/app/controller/sme_event_controller.dart';
+import 'package:mobile/app/controller/sme/sme_detail_event_controller.dart';
+import 'package:mobile/app/controller/sme/sme_event_controller.dart';
 
 class SmeEventBindings implements Bindings {
   @override

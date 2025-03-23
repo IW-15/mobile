@@ -21,7 +21,7 @@ class AppBottomBar extends StatelessWidget {
     [AppRoute.home, "assets/icons/home.svg", "Home"],
     [AppRoute.login, "assets/icons/belanja.svg", "Belanja"],
     [AppRoute.login, "assets/icons/katalog.svg", "Katalog"],
-    [AppRoute.talangan, "assets/icons/event.svg", "Event"],
+    [AppRoute.smeEvent, "assets/icons/event.svg", "Event"],
     [AppRoute.setting, "assets/icons/setting.svg", "Setting"],
   ];
 
@@ -79,16 +79,23 @@ class AppBottomBar extends StatelessWidget {
                 }
                 return GestureDetector(
                   onTap: () {
-                    if (i == 2) {
+                    if (!isSme) {
+                      if (i == 2) {
+                        return;
+                      }
+                      if (i == 0 || i == 4 || i == 1) {
+                        Get.toNamed(e[0]);
+                        return;
+                      }
+
+                      if (i == 3) {
+                        Get.toNamed(AppRoute.eoAvailableTenants(":id"));
+                      }
                       return;
                     }
-                    if (i == 0 || i == 4 || i == 1) {
+                    if (i == 0 || i == 3 || i == 4) {
                       Get.toNamed(e[0]);
                       return;
-                    }
-
-                    if (!isSme && i == 3) {
-                      Get.toNamed(AppRoute.eoAvailableTenants(":id"));
                     }
 
                     // Get.toNamed(AppRoute.loanOnboard);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/sme_detail_event_controller.dart';
+import 'package:mobile/app/controller/sme/sme_detail_event_controller.dart';
 import 'package:mobile/app/presentation/partials/event/card_invoice.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';

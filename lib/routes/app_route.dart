@@ -59,6 +59,8 @@ class AppRoute {
   static String outletDeleted = "/outlet/deleted";
 
   // SMEs SIDE ====== EVENT
+  static String smeEvent = "/event";
+
   static String eventSearch = "/event/search";
   static String eventDetail(String id) => "/event/detail/$id";
   static String eventRegistered = "/event/registered";

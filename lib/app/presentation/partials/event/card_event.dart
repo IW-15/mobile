@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/format_date.dart';
+import 'package:mobile/utils/img.dart';
 
 class CardEvent extends StatelessWidget {
-  const CardEvent({super.key});
+  final EventModel data;
+  const CardEvent({
+    super.key,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +33,8 @@ class CardEvent extends StatelessWidget {
                 ),
                 width: 100.w,
                 height: 100.w,
-                child: Image.asset(
-                  "assets/images/event_image_dummy.png",
+                child: Image.network(
+                  img(data.banner),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -37,7 +44,7 @@ class CardEvent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      "Festival Bazar Ramah",
+                      data.name,
                       style: body5BTextStyle(),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -51,7 +58,7 @@ class CardEvent extends StatelessWidget {
                         ),
                         SizedBox(width: 5.w),
                         Text(
-                          "19 September 2025, 15.00 WIB",
+                          "${formatDate(data.date)}, ${convertToWIB(data.time)}",
                           style: body6TextStyle(),
                         ),
                       ],
@@ -65,9 +72,12 @@ class CardEvent extends StatelessWidget {
                           size: 16.w,
                         ),
                         SizedBox(width: 5.w),
-                        Text(
-                          "Jl. Soekarno Hatta, Malang",
-                          style: body6TextStyle(),
+                        Flexible(
+                          child: Text(
+                            data.location,
+                            style: body6TextStyle(),
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ],
                     ),

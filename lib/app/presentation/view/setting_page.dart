@@ -93,6 +93,7 @@ class SettingPage extends GetView<HomeController> {
               child: Column(
                 children: [
                   element(
+                    path: AppRoute.outlet,
                     name: "Outlet",
                     desc: "Atur informasi outlet usahamu",
                   ),
