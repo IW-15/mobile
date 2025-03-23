@@ -79,4 +79,6 @@ class AppRoute {
   static String eoAvailableTenants(String id) => "/eo/events/$id/tenants";
   static String eoRegisteredTenants(String id) =>
       "/eo/events/$id/outlet-registered";
+
+  static String eoSetting = "/eo/setting";
 }

@@ -9,6 +9,7 @@ class EoHomeController extends GetxController {
 
   Rxn<UserModel> user = Rxn<UserModel>();
   Rxn<EoModel> eo = Rxn<EoModel>();
+  RxBool fnb = false.obs;
 
   void getProfileData() async {
     try {

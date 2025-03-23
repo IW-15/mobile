@@ -25,6 +25,7 @@ import 'package:mobile/app/presentation/view/eo/eo_event_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_event_publish_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_home_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_registered_tenants_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_setting_page.dart';
 import 'package:mobile/app/presentation/view/financial_tips_page.dart';
 import 'package:mobile/app/presentation/view/home_page.dart';
 import 'package:mobile/app/presentation/view/landing_page.dart';
@@ -339,6 +340,11 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.eoRegisteredTenants(":id"),
       page: () => EoRegisteredTenantsPage(),
       binding: EoTenantsBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoSetting,
+      page: () => EoSettingPage(),
+      binding: EoHomeBindings(),
     ),
   ];
 }

@@ -16,6 +16,19 @@ class EoTenantsRepo {
     }
   }
 
+  static Future<List<OutletModel>> getAllNoRestrict() async {
+    try {
+      final res = await fetchMultipleData<OutletModel>(
+        url: "/api/eo/tenants",
+        method: RequestMethod.PATCH,
+      );
+
+      return res.data!;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
   static Future<OutletModel> getDetail(String eventId, String tenantId) async {
     try {
       final res = await fetchData<OutletModel>(

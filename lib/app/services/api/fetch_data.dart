@@ -131,5 +131,5 @@ Future<ApiResponses<T>> fetchMultipleData<T>({
 
 void logoutHandler() async {
   await UserToken.clearToken();
-  Get.offAllNamed(AppRoute.onboarding);
+  Get.offAllNamed(AppRoute.landing);
 }

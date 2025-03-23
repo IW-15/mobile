@@ -15,7 +15,11 @@ class EoAvailableTenantsController extends GetxController {
 
   void getAvailableOutlet() async {
     try {
-      outlets.value = await EoTenantsRepo.getAll(getId());
+      if (getId() == ":id") {
+        outlets.value = await EoTenantsRepo.getAllNoRestrict();
+      } else {
+        outlets.value = await EoTenantsRepo.getAll(getId());
+      }
     } catch (_) {}
   }
 

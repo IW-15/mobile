@@ -14,13 +14,9 @@ class EoEventPage extends GetView<EoEventController> {
 
   @override
   Widget build(BuildContext context) {
-    // var aa = controller.events.keys.map((e) {
-    //   return e;
-    // });
-
     return Scaffold(
       bottomNavigationBar: AppBottomBar(
-        route: AppRoute.talangan,
+        route: AppRoute.eoEvent,
         isSme: false,
       ),
       body: TalanganScaffold(

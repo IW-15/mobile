@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
+import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/get_id.dart';
 
 class ModalDetailTenant extends StatelessWidget {
   final OutletModel data;
@@ -190,6 +194,42 @@ class ModalDetailTenant extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20.h),
+                getId() == ":id"
+                    ? Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoute.eoEvent);
+                            },
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: 32.w,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Icon(
+                                      Icons.warning,
+                                      size: 16.w,
+                                      color: ColorConstants.primary[500],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    'Sebelum undang tenant silakan pilih event terlebih dahulu*',
+                                    style: body5TextStyle(
+                                      weight: FontWeight.w500,
+                                      color: ColorConstants.primary[500],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 12.h),
+                        ],
+                      )
+                    : Container(),
                 isRegistered
                     ? Row(
                         children: [
@@ -220,7 +260,7 @@ class ModalDetailTenant extends StatelessWidget {
                       )
                     : AppButton(
                         width: 1.sw,
-                        onPressed: data.eventOpen
+                        onPressed: data.eventOpen && getId() != ":id"
                             ? () {
                                 onSubmit(data);
                               }

@@ -30,7 +30,7 @@ class AppBottomBar extends StatelessWidget {
     [AppRoute.eoEvent, "assets/icons/event.svg", "Event"],
     [AppRoute.login, "assets/icons/katalog.svg", "Katalog"],
     [AppRoute.login, "assets/icons/store.svg", "Tenant"],
-    [AppRoute.setting, "assets/icons/setting.svg", "Setting"],
+    [AppRoute.eoSetting, "assets/icons/setting.svg", "Setting"],
   ];
 
   @override
@@ -85,6 +85,10 @@ class AppBottomBar extends StatelessWidget {
                     if (i == 0 || i == 4 || i == 1) {
                       Get.toNamed(e[0]);
                       return;
+                    }
+
+                    if (!isSme && i == 3) {
+                      Get.toNamed(AppRoute.eoAvailableTenants(":id"));
                     }
 
                     // Get.toNamed(AppRoute.loanOnboard);

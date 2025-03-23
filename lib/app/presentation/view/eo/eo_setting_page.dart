@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/global_controller.dart';
-import 'package:mobile/app/controller/home_controller.dart';
+import 'package:mobile/app/controller/eo/eo_home_controller.dart';
 import 'package:mobile/app/presentation/partials/settings/card_profile.dart';
 import 'package:mobile/app/presentation/widgets/app_bottombar.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
@@ -12,13 +11,16 @@ import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
-class SettingPage extends GetView<HomeController> {
-  const SettingPage({super.key});
+class EoSettingPage extends GetView<EoHomeController> {
+  const EoSettingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AppBottomBar(route: AppRoute.setting),
+      bottomNavigationBar: AppBottomBar(
+        route: AppRoute.eoSetting,
+        isSme: false,
+      ),
       body: TalanganScaffold(
         title: "Settings",
         leading: false,
@@ -27,12 +29,9 @@ class SettingPage extends GetView<HomeController> {
           children: [
             Obx(
               () => CardProfile(
-                name: GlobalController.i.profile.value?.user.fullName ?? "",
-                storeName:
-                    GlobalController.i.profile.value?.merchant.name ?? "",
-                storeAddress:
-                    GlobalController.i.profile.value?.merchant.address ?? "",
-              ),
+                  name: controller.eo.value?.name ?? "",
+                  storeName: controller.eo.value?.pic ?? "",
+                  storeAddress: controller.eo.value?.address ?? ""),
             ),
             SizedBox(height: 20.h),
             Container(
@@ -93,19 +92,25 @@ class SettingPage extends GetView<HomeController> {
               child: Column(
                 children: [
                   element(
-                    name: "Outlet",
-                    desc: "Atur informasi outlet usahamu",
+                    path: AppRoute.outlet,
+                    name: "Bahasa",
+                    desc: "Atur bahasa utama aplikasimu",
                   ),
                   element(
                     name: "Pegawai",
                     desc: "Pengaturan seputar pegawaimu",
                   ),
                   element(
-                    name: "Metode pesanan",
-                    desc: "Lorem ipsum dolor sit amet",
+                    name: "Customer Service",
+                    desc: "Tanyakan ke pihak CS apabila ada kendala",
                   ),
                   element(
-                    name: "Lorem Ipsum",
+                    name: "FAQ",
+                    desc: "Lihat pertanyaan yang sering diajukan",
+                    end: true,
+                  ),
+                  element(
+                    name: "About",
                     desc: "Lorem ipsum dolor sit amet",
                     end: true,
                   ),
