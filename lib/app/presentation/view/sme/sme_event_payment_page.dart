@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/controller/sme/sme_detail_event_controller.dart';
+import 'package:mobile/app/controller/sme/sme_detail_event_registered_controller.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
-class SmeEventPaymentPage extends GetView<SmeDetailEventController> {
+class SmeEventPaymentPage extends GetView<SmeDetailEventRegisteredController> {
   const SmeEventPaymentPage({super.key});
 
   @override
@@ -94,7 +93,7 @@ class SmeEventPaymentPage extends GetView<SmeDetailEventController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(width: 60.w),
-                        numpad("8"),
+                        numpad("0"),
                         GestureDetector(
                           onTap: () {
                             controller.passcodePayment.value = "";
@@ -126,10 +125,7 @@ class SmeEventPaymentPage extends GetView<SmeDetailEventController> {
     return GestureDetector(
       onTap: () {
         if (controller.passcodePayment.value.length == 3) {
-          Get.offNamedUntil(
-            AppRoute.eventSuccess,
-            ModalRoute.withName(AppRoute.eventSearch),
-          );
+          controller.handlePayment();
           return;
         }
         controller.passcodePayment.value += "1";

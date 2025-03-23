@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/app/models/event_registered/event_registered_model.dart';
+import 'package:mobile/app/models/outlet/outlet_model.dart';
+import 'package:mobile/app/repository/outlet_repo.dart';
 import 'package:mobile/app/repository/sme_event_repo.dart';
 
 class SmeEventController extends GetxController {
@@ -10,6 +12,7 @@ class SmeEventController extends GetxController {
   TextEditingController inputController = TextEditingController();
   RxList<EventRegisteredModel> eventRegistered = <EventRegisteredModel>[].obs;
   RxList<EventModel> events = <EventModel>[].obs;
+  RxList<OutletModel> outlets = <OutletModel>[].obs;
 
   void getAllRegistered() async {
     try {
@@ -25,9 +28,17 @@ class SmeEventController extends GetxController {
     } catch (_) {}
   }
 
+  void getAllOutlets() async {
+    try {
+      final res = await OutletRepo.all();
+      outlets.value = res;
+    } catch (_) {}
+  }
+
   @override
   void onInit() {
     super.onInit();
+    getAllOutlets();
     getAllRegistered();
     getAllEvent();
   }

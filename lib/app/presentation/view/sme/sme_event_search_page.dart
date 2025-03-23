@@ -5,6 +5,7 @@ import 'package:mobile/app/controller/sme/sme_event_controller.dart';
 import 'package:mobile/app/presentation/partials/event/card_event.dart';
 import 'package:mobile/app/presentation/partials/event/card_event_nearby.dart';
 import 'package:mobile/app/presentation/partials/event/filter_event_search.dart';
+import 'package:mobile/app/presentation/widgets/not_found.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
@@ -110,18 +111,23 @@ class SmeEventSearchPage extends GetView<SmeEventController> {
               ],
             ),
             SizedBox(height: 16.h),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 300,
-                enlargeCenterPage: true,
-                enlargeFactor: .25,
-                clipBehavior: Clip.none,
-                enableInfiniteScroll: false,
-              ),
-              items: controller.events.map((e) {
-                return CardEventNearby(data: e);
-              }).toList(),
-            ),
+            controller.events.isEmpty
+                ? NotFound(
+                    title: "Event tidak tersedia",
+                    description:
+                        "Tidak ada event yang tersedia, silakan cek kembali di lain waktu")
+                : CarouselSlider(
+                    options: CarouselOptions(
+                      height: 300,
+                      enlargeCenterPage: true,
+                      enlargeFactor: .25,
+                      clipBehavior: Clip.none,
+                      enableInfiniteScroll: false,
+                    ),
+                    items: controller.events.map((e) {
+                      return CardEventNearby(data: e);
+                    }).toList(),
+                  ),
             SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,6 +156,12 @@ class SmeEventSearchPage extends GetView<SmeEventController> {
               ],
             ),
             SizedBox(height: 12.h),
+            controller.events.isEmpty
+                ? NotFound(
+                    title: "Event tidak tersedia",
+                    description:
+                        "Tidak ada event yang tersedia, silakan cek kembali di lain waktu")
+                : Container(),
             ...controller.events.map((e) => CardEvent(data: e))
           ],
         ),

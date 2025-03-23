@@ -34,7 +34,7 @@ class SmeEventRepo {
     try {
       final res = await fetchData<EventRegisteredModel>(
         url: "/api/events/$id/regist",
-        method: RequestMethod.PATCH,
+        method: RequestMethod.POST,
         data: data,
       );
 

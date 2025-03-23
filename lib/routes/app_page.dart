@@ -59,6 +59,7 @@ import 'package:mobile/app/presentation/view/register_usaha_page.dart';
 import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_page.dart';
+import 'package:mobile/app/presentation/view/sme/sme_detail_event_registered_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_invoice_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_payment_page.dart';
@@ -357,6 +358,11 @@ List<GetPage<dynamic>> appPage() {
     GetPage(
       name: AppRoute.smeEvent,
       page: () => SmeEventPage(),
+      binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.detailEventRegistered(":id"),
+      page: () => SmeDetailEventRegisteredPage(),
       binding: SmeEventBindings(),
     ),
   ];

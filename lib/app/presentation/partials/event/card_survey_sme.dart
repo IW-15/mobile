@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/route_manager.dart';
+import 'package:mobile/app/controller/sme/sme_detail_event_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
@@ -70,12 +69,7 @@ class CardSurveySme extends StatelessWidget {
                 SizedBox(height: 20.h),
                 AppButton(
                   width: 1.sw,
-                  onPressed: () {
-                    Get.offNamedUntil(
-                      AppRoute.eventRegistered,
-                      ModalRoute.withName(AppRoute.eventSearch),
-                    );
-                  },
+                  onPressed: SmeDetailEventController.i.handleRegis,
                   text: "Kirim",
                   textStyle: body4BTextStyle(color: Colors.white),
                 ),

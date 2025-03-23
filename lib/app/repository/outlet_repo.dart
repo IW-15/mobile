@@ -55,13 +55,23 @@ class OutletRepo {
     }
   }
 
-  static Future<OutletModel> delete(String id) async {
+  static Future delete(String id) async {
     try {
-      final res = await fetchData<OutletModel>(
+      await fetchData(
         url: "/api/outlet/$id",
         method: RequestMethod.DELETE,
       );
-      return res.data!;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  static Future toggle(String id) async {
+    try {
+      await fetchData(
+        url: "/api/outlet/$id/toggle-invitation",
+        method: RequestMethod.POST,
+      );
     } catch (_) {
       rethrow;
     }

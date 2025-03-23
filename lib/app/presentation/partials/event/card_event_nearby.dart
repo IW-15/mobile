@@ -19,7 +19,7 @@ class CardEventNearby extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoute.eventDetail("5"));
+        Get.toNamed(AppRoute.eventDetail(data.id.toString()));
       },
       child: Container(
         clipBehavior: Clip.antiAlias,

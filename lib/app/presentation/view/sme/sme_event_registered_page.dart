@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:mobile/app/controller/sme/sme_detail_event_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/app/presentation/widgets/talangan_scaffold.dart';
-import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/text_styles.dart';
 
 class SmeEventRegisteredPage extends GetView<SmeDetailEventController> {
@@ -44,7 +43,7 @@ class SmeEventRegisteredPage extends GetView<SmeDetailEventController> {
             SizedBox(height: 150.h),
             AppButton(
               onPressed: () {
-                Get.toNamed(AppRoute.eventInvoice("5"));
+                Get.back();
               },
               text: "Kembali",
             ),

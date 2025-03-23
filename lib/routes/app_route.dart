@@ -64,6 +64,8 @@ class AppRoute {
   static String eventSearch = "/event/search";
   static String eventDetail(String id) => "/event/detail/$id";
   static String eventRegistered = "/event/registered";
+  static String detailEventRegistered(String id) => "/event/registered/$id";
+
   static String eventInvoice(String id) => "/event/detail/$id/invoice";
   static String eventPayment(String id) => "/event/detail/$id/payment";
   static String eventSuccess = "/event/registered-success";

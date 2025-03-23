@@ -77,6 +77,24 @@ class CardOutlet extends StatelessWidget {
                           style: h5BTextStyle(),
                         ),
                         SizedBox(height: 7.h),
+                        RichText(
+                          text: TextSpan(
+                            text: "Status: ",
+                            style: body6BTextStyle(),
+                            children: [
+                              TextSpan(
+                                text:
+                                    "${data.eventOpen ? "" : "Tidak "}Menerima Undangan Event",
+                                style: body6BTextStyle(
+                                  color: data.eventOpen
+                                      ? Colors.green
+                                      : ColorConstants.error,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 7.h),
                         Text(
                           data.address,
                           style:
