@@ -32,6 +32,7 @@ dependencies:
   json_annotation: ^4.9.0
   json_serializable: ^6.9.4
   modal_bottom_sheet: ^3.0.0
+  syncfusion_flutter_charts: ^28.2.12
   syncfusion_flutter_datepicker: ^28.2.12
   syncfusion_flutter_gauges: ^28.2.9
 

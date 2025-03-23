@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/bindings/auth_bindings.dart';
 import 'package:mobile/app/bindings/cashflow_bindings.dart';
 import 'package:mobile/app/bindings/credit_score_bindings.dart';
+import 'package:mobile/app/bindings/eo_cashflow_bindings.dart';
 import 'package:mobile/app/bindings/eo_event_bindings.dart';
 import 'package:mobile/app/bindings/eo_home_bindings.dart';
 import 'package:mobile/app/bindings/eo_tenants_bindings.dart';
@@ -17,6 +18,7 @@ import 'package:mobile/app/presentation/view/create_outlet_page.dart';
 import 'package:mobile/app/presentation/view/credit_score_page.dart';
 import 'package:mobile/app/presentation/view/detail_outlet_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_available_tenants_page.dart';
+import 'package:mobile/app/presentation/view/eo/eo_cashflow_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_create_event_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_detail_event_page.dart';
 import 'package:mobile/app/presentation/view/eo/eo_event_draft_page.dart';
@@ -345,6 +347,11 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.eoSetting,
       page: () => EoSettingPage(),
       binding: EoHomeBindings(),
+    ),
+    GetPage(
+      name: AppRoute.eoCashflow,
+      page: () => EoCashflowPage(),
+      binding: EoCashflowBindings(),
     ),
   ];
 }

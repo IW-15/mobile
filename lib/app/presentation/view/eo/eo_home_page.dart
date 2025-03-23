@@ -1,10 +1,11 @@
-import 'dart:ui';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile/app/controller/eo/eo_home_controller.dart';
+import 'package:mobile/app/presentation/partials/eo_event/card_event_home.dart';
+import 'package:mobile/app/presentation/partials/home/card_event_insight.dart';
 import 'package:mobile/app/presentation/widgets/app_bottombar.dart';
 import 'package:mobile/app/presentation/widgets/scrollable_constraints.dart';
 import 'package:mobile/routes/app_route.dart';
@@ -12,7 +13,8 @@ import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
 class EoHomePage extends GetView<EoHomeController> {
-  const EoHomePage({super.key});
+  String currDate = DateFormat('MMMM yyyy').format(DateTime.now());
+  EoHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -165,71 +167,8 @@ class EoHomePage extends GetView<EoHomeController> {
                 ],
               ),
               child: CarouselSlider(
-                items: [1, 2, 3, 4]
-                    .map(
-                      (e) => Container(
-                        margin: EdgeInsets.symmetric(horizontal: 2.w),
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            Image.asset(
-                              "assets/images/event_image_dummy.png",
-                              fit: BoxFit.cover,
-                              width: 1.sw,
-                            ),
-                            Positioned(
-                              top: 15.w,
-                              left: 18.w,
-                              right: 18.w,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Livia's Event",
-                                    style: h2BTextStyle(color: Colors.white),
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                  ),
-                                  SizedBox(height: 8.h),
-                                  Text(
-                                    "30 Maret 2025 19.00 WIB",
-                                    style: body6BTextStyle(color: Colors.white),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 2.h),
-                                  Text(
-                                    "Kabupaten Banyumas, Jawa Tengah",
-                                    style: body6TextStyle(color: Colors.white),
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 15.w,
-                              right: 18.w,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 12.w,
-                                  vertical: 5.w,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Color(0xffE0E5FF),
-                                  borderRadius: BorderRadius.circular(20.w),
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.chevron_right,
-                                    color: ColorConstants.primary[500],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                items: controller.event
+                    .map((e) => CardEventHome(data: e))
                     .toList(),
                 options: CarouselOptions(
                   height: 180.w,
@@ -237,6 +176,142 @@ class EoHomePage extends GetView<EoHomeController> {
                 ),
               ),
             ),
+            SizedBox(height: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Dashboard",
+                  style: body5BTextStyle(),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      currDate,
+                      style: body6TextStyle(),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoute.eoCashflow);
+                      },
+                      child: Icon(
+                        Icons.chevron_right,
+                        size: 20.w,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 6.h),
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoute.eoCashflow);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [ColorConstants.shadow[1]!],
+                        borderRadius: BorderRadius.circular(10.w),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 24.w,
+                            height: 24.w,
+                            decoration: BoxDecoration(
+                              color: ColorConstants.primary[50],
+                              borderRadius: BorderRadius.circular(4.w),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.currency_pound_sharp,
+                                color: ColorConstants.primary[500],
+                                size: 20.w,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            "Pendapatan",
+                            style: body5BTextStyle(
+                              weight: FontWeight.w500,
+                              color: ColorConstants.slate[400],
+                            ),
+                          ),
+                          SizedBox(height: 2.h),
+                          Text(
+                            "Rp10.000.000",
+                            style: body3BTextStyle(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 6.w),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoute.eoCashflow);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [ColorConstants.shadow[1]!],
+                        borderRadius: BorderRadius.circular(10.w),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 24.w,
+                            height: 24.w,
+                            decoration: BoxDecoration(
+                              color: ColorConstants.primary[50],
+                              borderRadius: BorderRadius.circular(4.w),
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.task_outlined,
+                                color: ColorConstants.primary[500],
+                                size: 20.w,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            "Event Selesai",
+                            style: body5BTextStyle(
+                              weight: FontWeight.w500,
+                              color: ColorConstants.slate[400],
+                            ),
+                          ),
+                          SizedBox(height: 2.h),
+                          Text(
+                            "5",
+                            style: body3BTextStyle(),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20.h),
+            Text(
+              "Event Insights",
+              style: body5BTextStyle(),
+            ),
+            SizedBox(height: 6.h),
+            CardEventInsight(),
+            CardEventInsight(),
+            CardEventInsight(),
           ],
         ),
       )),

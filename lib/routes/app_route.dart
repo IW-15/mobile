@@ -81,4 +81,5 @@ class AppRoute {
       "/eo/events/$id/outlet-registered";
 
   static String eoSetting = "/eo/setting";
+  static String eoCashflow = "/eo/cashflow";
 }

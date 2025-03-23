@@ -8,6 +8,7 @@ import 'package:mobile/extensions/string_extension.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/format_date.dart';
 import 'package:mobile/utils/img.dart';
 
 class CardEoEvent extends StatelessWidget {
@@ -70,7 +71,7 @@ class CardEoEvent extends StatelessWidget {
                       ),
                       SizedBox(width: 8.w),
                       Text(
-                        "10.00 WIB",
+                        convertToWIB(data.time),
                         style: body6TextStyle(),
                       ),
                     ],

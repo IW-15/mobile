@@ -20,6 +20,25 @@ class EoEventRepo {
     }
   }
 
+  static Future<List<EventModel>> getALlNoGroup(
+      [Map<String, dynamic> filter = const {
+        "date": "desc",
+        "filter": "published",
+        "group": "no"
+      }]) async {
+    try {
+      final res = await fetchMultipleData<EventModel>(
+        url: "/api/eo/events",
+        method: RequestMethod.PATCH,
+        data: filter,
+      );
+
+      return res.data!;
+    } catch (err) {
+      rethrow;
+    }
+  }
+
   static Future<EventModel> create(FormData data) async {
     try {
       final res = await fetchData<EventModel>(
