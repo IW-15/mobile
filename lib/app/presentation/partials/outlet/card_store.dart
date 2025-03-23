@@ -41,7 +41,7 @@ class CardStore extends StatelessWidget {
                 field("Jenis", data.type),
                 field("Email", data.email),
                 field("No. Telp", data.phone),
-                field("Pendapatan per Bulan", data.revenue.label),
+                field("Pendapatan per Bulan", data.revenue?.label ?? ""),
                 field("Nomor Rekening", "***********7446"),
                 field("Lokasi Store", data.address, end: true),
               ],

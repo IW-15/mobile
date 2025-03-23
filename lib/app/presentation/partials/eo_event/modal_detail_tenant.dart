@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:mobile/app/controller/eo/eo_available_tenants_controller.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 
-class ModalDetailTenant extends GetView<EoAvailableTenantsController> {
+class ModalDetailTenant extends StatelessWidget {
   final OutletModel data;
+  final bool isRegistered;
+  final Function(OutletModel data) onSubmit;
+  final Function(OutletModel data)? onAccept;
+  final Function(OutletModel data)? onReject;
+
   const ModalDetailTenant({
     super.key,
     required this.data,
+    required this.onSubmit,
+    this.onAccept,
+    this.onReject,
+    this.isRegistered = false,
   });
 
   @override
@@ -183,15 +190,43 @@ class ModalDetailTenant extends GetView<EoAvailableTenantsController> {
                   ],
                 ),
                 SizedBox(height: 20.h),
-                AppButton(
-                    width: 1.sw,
-                    onPressed: data.eventOpen
-                        ? () {
-                            controller.handleInvite(data.id.toString());
-                          }
-                        : null,
-                    variant: AppButtonVariant.secondary,
-                    text: "Undang"),
+                isRegistered
+                    ? Row(
+                        children: [
+                          Expanded(
+                            child: AppButton(
+                              onPressed: onAccept != null
+                                  ? () {
+                                      onAccept!(data);
+                                    }
+                                  : null,
+                              text: "Terima",
+                              color: Colors.green,
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                            child: AppButton(
+                              onPressed: onReject != null
+                                  ? () {
+                                      onReject!(data);
+                                    }
+                                  : null,
+                              text: "Tolak",
+                              color: ColorConstants.error,
+                            ),
+                          ),
+                        ],
+                      )
+                    : AppButton(
+                        width: 1.sw,
+                        onPressed: data.eventOpen
+                            ? () {
+                                onSubmit(data);
+                              }
+                            : null,
+                        variant: AppButtonVariant.secondary,
+                        text: "Undang"),
               ],
             ),
           ),

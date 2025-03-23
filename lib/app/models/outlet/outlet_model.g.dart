@@ -17,8 +17,10 @@ OutletModel _$OutletModelFromJson(Map<String, dynamic> json) => OutletModel(
       phone: json['phone'] as String,
       rekening: json['rekening'] as String,
       type: json['type'] as String,
-      revenue:
-          OutletRevenueModel.fromJson(json['revenue'] as Map<String, dynamic>),
+      revenue: json['revenue'] == null
+          ? null
+          : OutletRevenueModel.fromJson(
+              json['revenue'] as Map<String, dynamic>),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

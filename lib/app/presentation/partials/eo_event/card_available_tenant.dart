@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile/app/controller/eo/eo_available_tenants_controller.dart';
 import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/presentation/partials/eo_event/modal_detail_tenant.dart';
 import 'package:mobile/styles/color_constants.dart';
@@ -20,7 +21,12 @@ class CardAvailableTenant extends StatelessWidget {
         try {
           showDialog(
             context: context,
-            builder: (context) => ModalDetailTenant(data: data),
+            builder: (context) => ModalDetailTenant(
+              data: data,
+              onSubmit: (e) {
+                EoAvailableTenantsController.i.handleInvite(e.id.toString());
+              },
+            ),
           );
         } catch (error) {
           showAlert(error.toString());

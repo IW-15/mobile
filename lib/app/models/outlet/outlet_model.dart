@@ -17,7 +17,7 @@ class OutletModel extends BaseModel implements ModelFactory {
   final String email;
   final String rekening;
   final String address;
-  final OutletRevenueModel revenue;
+  final OutletRevenueModel? revenue;
   final bool eventOpen;
   final String score;
 
