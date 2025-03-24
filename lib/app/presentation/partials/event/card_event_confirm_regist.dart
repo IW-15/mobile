@@ -61,7 +61,9 @@ class CardEventConfirmRegist extends GetView<SmeDetailEventController> {
                 Expanded(
                   child: AppButton(
                     variant: AppButtonVariant.secondary,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     text: "Batal",
                     type: AppButtonType.outlined,
                     textStyle: body4BTextStyle(

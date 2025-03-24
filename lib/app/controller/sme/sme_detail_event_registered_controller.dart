@@ -4,6 +4,7 @@ import 'package:mobile/app/controller/sme/sme_event_controller.dart';
 import 'package:mobile/app/models/event_registered/event_registered_model.dart';
 import 'package:mobile/app/presentation/widgets/app_loading.dart';
 import 'package:mobile/app/repository/sme_event_repo.dart';
+import 'package:mobile/global_settings.dart';
 import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/utils/get_id.dart';
 import 'package:mobile/utils/show_alert.dart';
@@ -48,6 +49,15 @@ class SmeDetailEventRegisteredController extends GetxController {
       await closeLoading(isLoading);
     } catch (_) {
       await closeLoading(isLoading);
+    }
+  }
+
+  void handleInsight() {
+    print("JASDASDASD");
+    if (Global.isInsight) {
+      Get.toNamed(AppRoute.insight);
+    } else {
+      Get.toNamed(AppRoute.insightOnboard);
     }
   }
 

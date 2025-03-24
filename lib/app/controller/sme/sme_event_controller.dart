@@ -14,6 +14,47 @@ class SmeEventController extends GetxController {
   RxList<EventModel> events = <EventModel>[].obs;
   RxList<OutletModel> outlets = <OutletModel>[].obs;
 
+  List<String> categories = [
+    'Bazaar',
+    'Festival Makanan',
+    'Konser',
+    'Pameran',
+  ].obs;
+
+  final Set<String> selectedCategories = <String>{}.obs;
+
+  Map<String, TextEditingController> formFilter = {
+    "startDate": TextEditingController(),
+    "endDate": TextEditingController(),
+    "minSewa": TextEditingController(),
+    "maxSewa": TextEditingController(),
+  }.obs;
+
+  void toggleCategory(String category) {
+    if (selectedCategories.contains(category)) {
+      selectedCategories.remove(category);
+    } else {
+      selectedCategories.add(category);
+    }
+  }
+
+  void handleFilter(
+    Set<String> category,
+    String startDate,
+    String endDate,
+    String minSewa,
+    String maxSewa,
+  ) {
+    formFilter['startDate']!.text = startDate;
+    formFilter['endDate']!.text = endDate;
+    formFilter['minSewa']!.text = minSewa;
+    formFilter['maxSewa']!.text = maxSewa;
+    selectedCategories.clear();
+    selectedCategories.addAll(category);
+    Get.back();
+    getAllEvent();
+  }
+
   void getAllRegistered() async {
     try {
       final res = await SmeEventRepo.allRegistered({});
@@ -23,7 +64,14 @@ class SmeEventController extends GetxController {
 
   void getAllEvent() async {
     try {
-      final res = await SmeEventRepo.all({});
+      final filter = {
+        "category": selectedCategories.map((e) => e).toList(),
+        "minDate": formFilter['startDate']!.text,
+        "maxDate": formFilter['endDate']!.text,
+        "minPrice": formFilter['minSewa']!.text,
+        "maxPrice": formFilter['maxSewa']!.text,
+      };
+      final res = await SmeEventRepo.all(filter);
       events.value = res;
     } catch (_) {}
   }

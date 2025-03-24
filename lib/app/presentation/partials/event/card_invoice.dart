@@ -5,7 +5,11 @@ import 'package:mobile/styles/text_styles.dart';
 import 'package:mobile/utils/format_currency.dart';
 
 class CardInvoice extends StatelessWidget {
-  const CardInvoice({super.key});
+  final int total;
+  const CardInvoice({
+    super.key,
+    required this.total,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class CardInvoice extends StatelessWidget {
                 children: [
                   SizedBox(height: 110.h),
                   Text(
-                    formatCurrency(1500000),
+                    formatCurrency(total),
                     style: body1BTextStyle(
                       color: ColorConstants.primary[500],
                     ),

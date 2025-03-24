@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' show FormData;
 import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/app/models/event/event_response.dart';
 import 'package:mobile/app/services/api/fetch_data.dart';

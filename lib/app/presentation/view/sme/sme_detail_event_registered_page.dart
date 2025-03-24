@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/controller/sme/sme_detail_event_registered_controller.dart';
 import 'package:mobile/app/presentation/widgets/app_button.dart';
@@ -18,6 +19,7 @@ class SmeDetailEventRegisteredPage
     return Scaffold(
       body: Obx(
         () {
+          final status = controller.data.value?.status ?? "received";
           final event = controller.data.value?.event;
           final outlet = controller.data.value?.outlet;
 
@@ -299,16 +301,31 @@ class SmeDetailEventRegisteredPage
                                     SizedBox(height: 12.h),
                                     AppButton(
                                       width: 1.sw,
-                                      onPressed: (controller
-                                                          .data.value?.status ??
-                                                      "received") ==
-                                                  "rejected" ||
-                                              (controller.data.value?.status ??
-                                                      "received") ==
-                                                  "received"
+                                      onPressed: status == "rejected" ||
+                                              status == "received"
                                           ? null
-                                          : controller.handleSubmit,
-                                      text: "Bayar",
+                                          : status == "accepted"
+                                              ? controller.handleInsight
+                                              : controller.handleSubmit,
+                                      text: status == "accepted" ? "" : "Bayar",
+                                      child: status == "accepted"
+                                          ? Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                  "assets/icons/insight.svg",
+                                                ),
+                                                SizedBox(width: 10.w),
+                                                Text(
+                                                  "Post-Event Insight",
+                                                  style: body3BTextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : Container(),
                                     ),
                                   ],
                                 ),

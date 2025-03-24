@@ -73,6 +73,12 @@ class AppRoute {
   static String invitation = "/invitation";
   static String detailInvitation(String id) => "/invitation/$id";
 
+  static String insight = "/insight";
+  static String insightOnboard = "/insight/onboard";
+  static String insightInvoice = "/insight/invoice";
+  static String insightPayment = "/insight/payment";
+  static String insightPaid = "/insight/paid";
+
   // EO SIDE ====
   static String eoHome = "/eo/home";
   static String eoEvent = "/eo/events";

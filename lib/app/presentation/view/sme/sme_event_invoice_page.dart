@@ -18,33 +18,35 @@ class SmeEventInvoicePage extends GetView<SmeDetailEventRegisteredController> {
     return Scaffold(
       body: TalanganScaffold(
         title: "Pembayaran Event",
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CardInvoice(),
-            Expanded(child: Container()),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Total Pembayaran",
-                  style: body4TextStyle(),
-                ),
-                Text(
-                  formatCurrency(301000),
-                  style: body5BTextStyle(),
-                ),
-              ],
-            ),
-            SizedBox(height: 16.h),
-            AppButton(
-              onPressed: () {
-                Get.toNamed(AppRoute.eventPayment(getId()));
-              },
-              text: "Bayar",
-            ),
-            SizedBox(height: 20.h),
-          ],
+        child: Obx(
+          () => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CardInvoice(total: controller.data.value?.event.tenantPrice ?? 0),
+              Expanded(child: Container()),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Total Pembayaran",
+                    style: body4TextStyle(),
+                  ),
+                  Text(
+                    formatCurrency(301000),
+                    style: body5BTextStyle(),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.h),
+              AppButton(
+                onPressed: () {
+                  Get.toNamed(AppRoute.eventPayment(getId()));
+                },
+                text: "Bayar",
+              ),
+              SizedBox(height: 20.h),
+            ],
+          ),
         ),
       ),
     );

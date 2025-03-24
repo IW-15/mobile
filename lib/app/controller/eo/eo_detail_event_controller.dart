@@ -65,7 +65,10 @@ class EoDetailEventController extends GetxController {
 
         await closeLoading(isLoading);
         Get.toNamed(AppRoute.eoEventDraft);
-      } catch (error) {}
+      } catch (error) {
+        printError(info: error.toString());
+        showAlert(error.toString());
+      }
       await closeLoading(isLoading);
     }
   }

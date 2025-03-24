@@ -156,6 +156,7 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
                                           ],
                                         ),
                                         SizedBox(height: 8.h),
+                                        SizedBox(height: 8.h),
                                         Text(
                                           "Partisipan",
                                           style: body5BTextStyle(),
@@ -281,25 +282,49 @@ class SmeDetailEventPage extends GetView<SmeDetailEventController> {
             Positioned(
               child: SafeArea(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                      iconSize: 22.sp,
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: Icon(
-                        Icons.chevron_left,
-                        size: 26.w,
-                        color: Colors.white,
-                      ),
+                    Row(
+                      children: [
+                        IconButton(
+                          iconSize: 22.sp,
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.chevron_left,
+                            size: 26.w,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 4.w),
+                        Text(
+                          controller.data.value?.name ?? "",
+                          style: h4BTextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 4.w),
-                    Text(
-                      controller.data.value?.name ?? "",
-                      style: h4BTextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: ColorConstants.primary[500]!.withOpacity(.5),
+                            borderRadius: BorderRadius.circular(8.w),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 6.w,
+                            vertical: 2.h,
+                          ),
+                          child: Text(
+                            controller.data.value?.category ?? "",
+                            style: body5TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                      ],
+                    )
                   ],
                 ),
               ),

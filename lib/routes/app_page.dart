@@ -8,6 +8,7 @@ import 'package:mobile/app/bindings/eo_event_bindings.dart';
 import 'package:mobile/app/bindings/eo_home_bindings.dart';
 import 'package:mobile/app/bindings/eo_tenants_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
+import 'package:mobile/app/bindings/insight_bindings.dart';
 import 'package:mobile/app/bindings/invitation_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
@@ -60,6 +61,11 @@ import 'package:mobile/app/presentation/view/register_usaha_page.dart';
 import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
 import 'package:mobile/app/presentation/view/sme/detail_invitation_page.dart';
+import 'package:mobile/app/presentation/view/sme/insight_invoice_page.dart';
+import 'package:mobile/app/presentation/view/sme/insight_onboard_page.dart';
+import 'package:mobile/app/presentation/view/sme/insight_page.dart';
+import 'package:mobile/app/presentation/view/sme/insight_paid_page.dart';
+import 'package:mobile/app/presentation/view/sme/insight_payment_page.dart';
 import 'package:mobile/app/presentation/view/sme/invitation_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_registered_page.dart';
@@ -377,6 +383,31 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.detailInvitation(":id"),
       page: () => DetailInvitationPage(),
       binding: InvitationBindings(),
+    ),
+    GetPage(
+      name: AppRoute.insight,
+      page: () => InsightPage(),
+      binding: InsightBindings(),
+    ),
+    GetPage(
+      name: AppRoute.insightOnboard,
+      page: () => InsightOnboardPage(),
+      binding: InsightBindings(),
+    ),
+    GetPage(
+      name: AppRoute.insightInvoice,
+      page: () => InsightInvoicePage(),
+      binding: InsightBindings(),
+    ),
+    GetPage(
+      name: AppRoute.insightPayment,
+      page: () => InsightPaymentPage(),
+      binding: InsightBindings(),
+    ),
+    GetPage(
+      name: AppRoute.insightPaid,
+      page: () => InsightPaidPage(),
+      binding: InsightBindings(),
     ),
   ];
 }

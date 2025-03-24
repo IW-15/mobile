@@ -167,7 +167,6 @@ class _AppDropdownState<T> extends State<AppDropdown<T>> {
                     }
                   : null,
               dropdownStyleData: DropdownStyleData(
-                isOverButton: true,
                 useSafeArea: true,
                 offset: Offset(0, -10.h),
                 decoration: BoxDecoration(
