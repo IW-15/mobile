@@ -8,6 +8,7 @@ import 'package:mobile/app/bindings/eo_event_bindings.dart';
 import 'package:mobile/app/bindings/eo_home_bindings.dart';
 import 'package:mobile/app/bindings/eo_tenants_bindings.dart';
 import 'package:mobile/app/bindings/home_bindings.dart';
+import 'package:mobile/app/bindings/invitation_bindings.dart';
 import 'package:mobile/app/bindings/loan_bindings.dart';
 import 'package:mobile/app/bindings/loan_onboard_binding.dart';
 import 'package:mobile/app/bindings/outlet_bindings.dart';
@@ -58,6 +59,8 @@ import 'package:mobile/app/presentation/view/register_tipe_page.dart';
 import 'package:mobile/app/presentation/view/register_usaha_page.dart';
 import 'package:mobile/app/presentation/view/repayment_success_page.dart';
 import 'package:mobile/app/presentation/view/setting_page.dart';
+import 'package:mobile/app/presentation/view/sme/detail_invitation_page.dart';
+import 'package:mobile/app/presentation/view/sme/invitation_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_detail_event_registered_page.dart';
 import 'package:mobile/app/presentation/view/sme/sme_event_invoice_page.dart';
@@ -364,6 +367,16 @@ List<GetPage<dynamic>> appPage() {
       name: AppRoute.detailEventRegistered(":id"),
       page: () => SmeDetailEventRegisteredPage(),
       binding: SmeEventBindings(),
+    ),
+    GetPage(
+      name: AppRoute.invitation,
+      page: () => InvitationPage(),
+      binding: InvitationBindings(),
+    ),
+    GetPage(
+      name: AppRoute.detailInvitation(":id"),
+      page: () => DetailInvitationPage(),
+      binding: InvitationBindings(),
     ),
   ];
 }

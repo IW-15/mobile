@@ -70,6 +70,9 @@ class AppRoute {
   static String eventPayment(String id) => "/event/detail/$id/payment";
   static String eventSuccess = "/event/registered-success";
 
+  static String invitation = "/invitation";
+  static String detailInvitation(String id) => "/invitation/$id";
+
   // EO SIDE ====
   static String eoHome = "/eo/home";
   static String eoEvent = "/eo/events";

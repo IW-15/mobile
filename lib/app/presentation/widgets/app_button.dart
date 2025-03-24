@@ -50,10 +50,10 @@ class AppButton extends StatelessWidget {
       duration: Duration(milliseconds: 350),
       width: width,
       decoration: BoxDecoration(
-        color: color ??
-            (onPressed == null
-                ? ColorConstants.slate[200]
-                : variant == AppButtonVariant.primary
+        color: onPressed == null
+            ? ColorConstants.slate[200]
+            : color ??
+                (variant == AppButtonVariant.primary
                     ? ColorConstants.primary[500]
                     : Color(0xffDFE6FF)),
         borderRadius: borderRadius ?? BorderRadius.circular(10.w),

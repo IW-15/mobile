@@ -4,6 +4,7 @@ import 'package:mobile/app/models/credit_score/credit_score_model.dart';
 import 'package:mobile/app/models/eo/eo_model.dart';
 import 'package:mobile/app/models/event/event_model.dart';
 import 'package:mobile/app/models/event/event_response.dart';
+import 'package:mobile/app/models/event_invitation/event_invitation_model.dart';
 import 'package:mobile/app/models/event_registered/event_registered_model.dart';
 import 'package:mobile/app/models/loan/loan_model.dart';
 import 'package:mobile/app/models/loan_profile/loan_profile_model.dart';
@@ -57,6 +58,8 @@ abstract class ModelFactory {
       return EventsResponse.fromJson(json);
     } else if (strType == (EventRegisteredModel).toString()) {
       return EventRegisteredModel.fromJson(json);
+    } else if (strType == (EventInvitationModel).toString()) {
+      return EventInvitationModel.fromJson(json);
     }
 
     throw UnimplementedError();

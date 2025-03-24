@@ -36,17 +36,22 @@ class SmeEventPage extends GetView<SmeEventController> {
                   Expanded(
                     child: Column(
                       children: [
-                        Container(
-                          width: 48.w,
-                          height: 48.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: ColorConstants.primary[500],
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.email,
-                              color: Colors.white,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoute.invitation);
+                          },
+                          child: Container(
+                            width: 48.w,
+                            height: 48.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: ColorConstants.primary[500],
+                            ),
+                            child: Center(
+                              child: Icon(
+                                Icons.email,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
