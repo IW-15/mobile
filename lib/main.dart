@@ -40,6 +40,7 @@ class MainApp extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return GetMaterialApp(
+                  debugShowCheckedModeBanner: false,
                   initialBinding: GlobalBinding(),
                   title: dotenv.env['PROJECT_TITLE']!,
                   theme: globalTheme(),

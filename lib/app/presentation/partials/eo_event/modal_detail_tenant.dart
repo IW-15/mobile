@@ -8,6 +8,7 @@ import 'package:mobile/routes/app_route.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
 import 'package:mobile/utils/get_id.dart';
+import 'package:mobile/utils/img.dart';
 
 class ModalDetailTenant extends StatelessWidget {
   final OutletModel data;
@@ -51,8 +52,8 @@ class ModalDetailTenant extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.w),
-                  child: Image.asset(
-                    "assets/images/outlet_dummy.jpg",
+                  child: Image.network(
+                    img(data.image),
                     width: 1.sw,
                     height: 150.h,
                     fit: BoxFit.cover,

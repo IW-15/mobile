@@ -5,6 +5,7 @@ import 'package:mobile/app/models/outlet/outlet_model.dart';
 import 'package:mobile/app/presentation/partials/eo_event/modal_detail_tenant.dart';
 import 'package:mobile/styles/color_constants.dart';
 import 'package:mobile/styles/text_styles.dart';
+import 'package:mobile/utils/img.dart';
 import 'package:mobile/utils/show_alert.dart';
 
 class CardAvailableTenant extends StatelessWidget {
@@ -49,8 +50,8 @@ class CardAvailableTenant extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.w),
               ),
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(
-                "assets/images/outlet_dummy.jpg",
+              child: Image.network(
+                img(data.image),
                 fit: BoxFit.cover,
               ),
             ),

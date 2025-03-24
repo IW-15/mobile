@@ -146,6 +146,10 @@ class CardRegisteredTenant extends StatelessWidget {
                               data: data.outlet,
                               isRegistered: true,
                               onSubmit: (e) {},
+                              onAccept:
+                                  EoRegisteredTenantsController.i.handleAccept,
+                              onReject:
+                                  EoRegisteredTenantsController.i.handleReject,
                             ));
                   },
                   child: Container(

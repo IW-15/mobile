@@ -42,11 +42,11 @@ class SmeDetailEventRegisteredController extends GetxController {
       showLoadingDialog(Get.context!, isLoading);
       await SmeEventRepo.payRegistered(getId());
       SmeEventController.i.getAllEvent();
+      await closeLoading(isLoading);
       Get.offNamedUntil(
         AppRoute.eventSuccess,
         ModalRoute.withName(AppRoute.smeEvent),
       );
-      await closeLoading(isLoading);
     } catch (_) {
       await closeLoading(isLoading);
     }

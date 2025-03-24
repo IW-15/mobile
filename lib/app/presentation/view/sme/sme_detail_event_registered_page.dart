@@ -325,7 +325,7 @@ class SmeDetailEventRegisteredPage
                                                 ),
                                               ],
                                             )
-                                          : Container(),
+                                          : null,
                                     ),
                                   ],
                                 ),

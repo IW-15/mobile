@@ -137,26 +137,30 @@ class HomePage extends GetView<HomeController> {
                                     ),
                                   ),
                                   SizedBox(width: 10.w),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        GlobalController.i.profile.value
-                                                ?.merchant.name ??
-                                            "",
-                                        style: body5BTextStyle(
-                                          color: Colors.white,
+                                  Flexible(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          GlobalController.i.profile.value
+                                                  ?.merchant.name ??
+                                              "",
+                                          style: body5BTextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        GlobalController.i.profile.value
-                                                ?.merchant.address ??
-                                            "",
-                                        style:
-                                            body6TextStyle(color: Colors.white),
-                                      ),
-                                    ],
+                                        Text(
+                                          GlobalController.i.profile.value
+                                                  ?.merchant.address ??
+                                              "",
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: body6TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
