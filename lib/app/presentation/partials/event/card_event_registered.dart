@@ -85,18 +85,20 @@ class CardEventRegistered extends StatelessWidget {
                       "Tanggal: ${formatDate(data.date)}",
                       style: body6BTextStyle(color: ColorConstants.slate[500]),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          "Get Insight",
-                          style: body6TextStyle(),
-                        ),
-                        Icon(
-                          Icons.chevron_right,
-                          size: 16.w,
-                        ),
-                      ],
-                    ),
+                    data.status == "accepted"
+                        ? Row(
+                            children: [
+                              Text(
+                                "Get Insight",
+                                style: body6TextStyle(),
+                              ),
+                              Icon(
+                                Icons.chevron_right,
+                                size: 16.w,
+                              ),
+                            ],
+                          )
+                        : Container(),
                   ],
                 ),
               ],
